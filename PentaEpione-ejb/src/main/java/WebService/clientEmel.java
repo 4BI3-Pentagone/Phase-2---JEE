@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class clientEmel {
-//TESTB EMEL
+
 	/*try {
         JSONArray json = readJsonFromUrl("http://url.com/api/objects/?format=json");
         JSONObject obj = (JSONObject)json.get(5);
@@ -24,7 +24,22 @@ public class clientEmel {
     }*/
 int a;
 
-	/*
+	  public clientEmel(int a) {
+	super();
+	this.a = a;
+}
+	public static String readAll(Reader rd) throws IOException {
+	        StringBuilder sb = new StringBuilder();
+	        int cp;
+	        while ((cp = rd.read()) != -1) {
+	            sb.append((char) cp);
+	        }
+	        return sb.toString();
+	    }
+	   public clientEmel() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	public static JSONArray readJsonFromUrl(String url) throws IOException {
 	        // String s = URLEncoder.encode(url, "UTF-8");
 	        // URL url = new URL(s);
@@ -40,5 +55,5 @@ int a;
 	            is.close();
 	        }
 	        return json;
-	    }*/
+	    }
 }

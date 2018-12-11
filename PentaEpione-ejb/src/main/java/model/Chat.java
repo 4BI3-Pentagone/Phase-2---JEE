@@ -21,12 +21,12 @@ public class Chat implements Serializable {
 
 	//bi-directional many-to-one association to AspNetUser
 	@ManyToOne
-	@JoinColumn(name="patient_Id")
+	@JoinColumn(name="patient_Id", referencedColumnName="Id")
 	private AspNetUser aspNetUser1;
 
 	//bi-directional many-to-one association to AspNetUser
 	@ManyToOne
-	@JoinColumn(name="doctor_Id")
+	@JoinColumn(name="doctor_Id", referencedColumnName="Id")
 	private AspNetUser aspNetUser2;
 
 	public Chat() {

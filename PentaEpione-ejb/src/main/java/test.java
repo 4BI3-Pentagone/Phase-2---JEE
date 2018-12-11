@@ -1,3 +1,4 @@
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import model.Cours;
 
 public class test {
 
-	public static void main(String[] args) {/*
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 clientEmel c = new clientEmel(2);
 try {
@@ -22,16 +23,24 @@ try {
             
             
             	
-        //    JSONObject obj = (JSONObject)json.get(i);
+            JSONObject obj = (JSONObject)json.get(i);
             
             
-                   }
+            patient.setFirstName(obj.get("FirstName").toString());
+            patient.setId(obj.get("Id").toString());
+            patient.setEmail(obj.get("Email").toString());
+     //       patient.setBirthDate(obj.get("birthDate").toString());
+            patient.setLastName(obj.get("lastName").toString());
+            patient.setImageName(obj.get("ImageName").toString());
+           // patient.setCours1(obj.get("course").toString());
+            listePatient.add(patient);
+         }
             System.out.println(listePatient);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
-        }*/
+        }
 	}
 
 }
