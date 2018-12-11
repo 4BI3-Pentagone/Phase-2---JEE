@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 public class clientEmel {
-
+//TESTB EMEL
 	/*try {
         JSONArray json = readJsonFromUrl("http://url.com/api/objects/?format=json");
         JSONObject obj = (JSONObject)json.get(5);
