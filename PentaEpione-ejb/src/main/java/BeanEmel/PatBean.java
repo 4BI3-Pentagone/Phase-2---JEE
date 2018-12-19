@@ -104,7 +104,7 @@ public class PatBean implements PatBeanRemote, PatBeanLocal {
     			// Cours c =new Cours();
     			for (int i = 0, count = json.length(); i < count; i++) {
     				Appointment a = new Appointment();
-
+//test
     				JSONObject obj = (JSONObject) json.get(i);
     				a.setDisease(obj.get("Disease").toString());
     				a.setAppointmentId(obj.getInt("AppointmentId"));
