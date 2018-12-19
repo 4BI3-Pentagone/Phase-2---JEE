@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -22,7 +23,7 @@ public class Appointment implements Serializable {
 	private int appointmentId;
 
 	@Column(name="Date")
-	private Timestamp date;
+	private Date date;
 
 	@Column(name="Disease")
 	private String disease;
@@ -54,11 +55,11 @@ public class Appointment implements Serializable {
 		this.appointmentId = appointmentId;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -114,6 +115,13 @@ public class Appointment implements Serializable {
 		debreif.setAppointment(null);
 
 		return debreif;
+	}
+
+	@Override
+	public String toString() {
+		return "Appointment [appointmentId=" + appointmentId + ", date=" + date + ", disease=" + disease + ", state="
+				+ state + ", aspNetUser1=" + aspNetUser1 + ", aspNetUser2=" + aspNetUser2 + ", debreifs=" + debreifs
+				+ "]";
 	}
 
 }

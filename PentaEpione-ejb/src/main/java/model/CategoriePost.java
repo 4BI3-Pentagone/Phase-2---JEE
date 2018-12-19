@@ -27,7 +27,7 @@ public class CategoriePost implements Serializable {
 	private String libelle;
 
 	//bi-directional many-to-one association to Post
-	@OneToMany(mappedBy="categoriePost")
+//	@OneToMany(mappedBy="categoriePost")
 	private List<Post> posts;
 
 	public CategoriePost() {
@@ -65,7 +65,7 @@ public class CategoriePost implements Serializable {
 		this.posts = posts;
 	}
 
-	public Post addPost(Post post) {
+/*	public Post addPost(Post post) {
 		getPosts().add(post);
 		post.setCategoriePost(this);
 
@@ -78,5 +78,5 @@ public class CategoriePost implements Serializable {
 
 		return post;
 	}
-
+*/
 }
