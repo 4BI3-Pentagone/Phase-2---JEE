@@ -3,11 +3,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import WebService.clientEmel;
 import model.Appointment;
 
@@ -18,8 +16,10 @@ public class test {
 		// TODO Auto-generated method stub
 		clientEmel c = new clientEmel(2);
 		try {
+
 			JSONArray json = c.readJsonFromUrl("http://localhost:54774/appoi/GetMyCourse?idp=8978b457-fd9f-4e49-88fa-6330cd2c8ffa");
 			//
+
 			ArrayList<Appointment> listeViste = new ArrayList<>();
 			// Cours c =new Cours();
 			for (int i = 0, count = json.length(); i < count; i++) {

@@ -31,6 +31,7 @@ public class Appointment implements Serializable {
 	@Column(name="Rate")
 	private int  rate;
 	@Column(name="Date")
+
 	private Date  date;
 
 	public int getRate() {
@@ -40,6 +41,7 @@ public class Appointment implements Serializable {
 	public void setRate(int rate) {
 		this.rate = rate;
 	}
+
 
 	@Column(name="Disease")
 	private String disease;
@@ -139,5 +141,6 @@ public class Appointment implements Serializable {
 
 		return debreif;
 	}
+
 
 }

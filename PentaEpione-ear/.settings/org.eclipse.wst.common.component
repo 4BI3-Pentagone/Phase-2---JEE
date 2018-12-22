@@ -11,7 +11,11 @@
         <dependent-module archiveName="json.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/org/json/json/20090211/json-20090211.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+<<<<<<< HEAD
         <dependent-module archiveName="javax.ws.rs-api.jar" deploy-path="/lib" handle="module:/classpath/var/M2_REPO/javax/ws/rs/javax.ws.rs-api/2.0-m02/javax.ws.rs-api-2.0-m02.jar">
+=======
+        <dependent-module archiveName="json.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/json/json/20090211/json-20090211.jar">
+>>>>>>> 8afb4511c4fbabcf769ef727c813201f73eb4e17
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
