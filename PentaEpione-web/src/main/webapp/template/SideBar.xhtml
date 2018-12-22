@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<!-- ========== Left Sidebar Start ========== -->
+	<div class="left side-menu">
+		<button type="button"
+			class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+			<i class="ion-close"></i>
+		</button>
+
+		<!-- LOGO -->
+		<div class="topbar-left">
+			<div class="text-center">
+				<!--<a href="#" class="logo">Admiry</a>-->
+				<a href="#" class="logo logo-admin"><img
+					src="../../resources/assets/images/epione.png" height="150"
+					alt="logo" /></a>
+			</div>
+		</div>
+
+		<div class="sidebar-inner slimscrollleft">
+
+			<div class="user-details">
+				<div class="text-center">
+					<img src="../../resources/assets/images/users/avatar-6.jpg" alt=""
+						class="rounded-circle" />
+				</div>
+				<div class="user-info">
+					<h4 class="font-16">Steven Meyers</h4>
+					<span class="text-muted user-status"><i
+						class="fa fa-dot-circle-o text-success"></i> Online</span>
+				</div>
+			</div>
+
+			<div id="sidebar-menu">
+				<ul>
+					<li class="menu-title">Main</li>
+
+					<li><a href="../Blank/Dashboard.jsf" class="waves-effect">
+							<i class="ti-home"></i> <span> Home </span>
+					</a></li>
+
+					<li class="has_sub"><a href="javascript:void(0);"
+						class="waves-effect"><i
+							class="mdi mdi-account-multiple-outline"></i> <span>Doctor</span>
+							<span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+						<ul class="list-unstyled">
+							<li><a href="">show list of doctor</a></li>
+							<!-- <li><a href="../Employee/ShowEmployee.jsf">
+									</a></li> -->
+							
+						</ul></li>
+
+					<li class="has_sub"><a href="javascript:void(0);"
+						class="waves-effect"><i class="mdi mdi-account-box-outline"></i>
+							<span> Contact </span> <span class="pull-right"><i
+								class="mdi mdi-chevron-right"></i></span></a>
+						<ul class="list-unstyled">
+
+						</ul></li>
+					<li class="has_sub"><a href="javascript:void(0);"
+						class="waves-effect"><i class="mdi mdi-projector-screen"></i>
+							<span>About Us</span> <span class="pull-right"><i
+								class="mdi mdi-chevron-right"></i></span></a>
+						<ul class="list-unstyled">
+						
+						</ul></li>
+
+
+					<li class="has_sub"><a href="javascript:void(0);"
+						class="waves-effect"><i class="ti-pencil-alt"></i><span>Forum
+						</span><span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+						<ul class="list-unstyled">
+							<li><a href="../pages/Forum/ListPosts.xhtml">Show Posts
+									</a></li>
+							<li><a href="">Add Posts
+								</a></li>
+
+						</ul></li>
+						
+							<li class="has_sub"><a href="javascript:void(0);"
+						class="waves-effect"><i class="ti-pencil-alt"></i><span>Courses
+						</span><span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+						<ul class="list-unstyled">
+							<li><a href="../pages/Forum/ListAppointements.xhtml">Show my course
+									</a></li>
+							
+
+						</ul></li>
+						
+
+		
+				</ul>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<!-- end sidebarinner -->
+	</div>
+	<!-- Left Sidebar End -->
+</ui:composition>

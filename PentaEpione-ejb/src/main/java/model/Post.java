@@ -19,9 +19,11 @@ public class Post implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="PostID")
-	private int postID;
-
-	private int categoriePost_Id;
+	private String postID;
+	
+    @ManyToOne
+    @JoinColumn(name="categoriePost_Id")
+	private CategoriePost categoriePost_Id;
 
 	@Column(name="Message")
 	private String message;
@@ -44,21 +46,15 @@ public class Post implements Serializable {
 	public Post() {
 	}
 
-	public int getPostID() {
+	public String getPostID() {
 		return this.postID;
 	}
 
-	public void setPostID(int postID) {
+	public void setPostID(String postID) {
 		this.postID = postID;
 	}
 
-	public int getCategoriePost_Id() {
-		return this.categoriePost_Id;
-	}
-
-	public void setCategoriePost_Id(int categoriePost_Id) {
-		this.categoriePost_Id = categoriePost_Id;
-	}
+	
 
 	public String getMessage() {
 		return this.message;
@@ -112,6 +108,21 @@ public class Post implements Serializable {
 
 	public void setAspNetUser(AspNetUser aspNetUser) {
 		this.aspNetUser = aspNetUser;
+	}
+
+	public CategoriePost getCategoriePost_Id() {
+		return categoriePost_Id;
+	}
+
+	public void setCategoriePost_Id(CategoriePost categoriePost_Id) {
+		this.categoriePost_Id = categoriePost_Id;
+	}
+
+	@Override
+	public String toString() {
+		return "Post [postID=" + postID + ", categoriePost_Id=" + categoriePost_Id + ", message=" + message
+				+ ", postedDate=" + postedDate + ", titre=" + titre + ", comments=" + comments + ", aspNetUser="
+				+ aspNetUser + "]";
 	}
 
 }

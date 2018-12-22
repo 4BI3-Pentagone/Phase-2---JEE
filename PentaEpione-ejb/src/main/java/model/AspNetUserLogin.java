@@ -19,7 +19,7 @@ public class AspNetUserLogin implements Serializable {
 
 	//bi-directional many-to-one association to AspNetUser
 	@ManyToOne
-	@JoinColumn(name="UserId")
+	@JoinColumn(name="UserId" , insertable=false ,updatable=false)
 	private AspNetUser aspNetUser;
 
 	public AspNetUserLogin() {

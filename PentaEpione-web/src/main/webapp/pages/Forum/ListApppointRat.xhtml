@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Epione -Show contrat" />
+	<ui:param name="param_page" value="Show Posts" />
+<h:head>
+     
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
+        <link rel="shortcut icon" href="./resources/assets/images/Souslogo.jpeg"/>
+        <link rel="stylesheet" href="./resources/assets/plugins/morris/morris.css" />
+        <link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="./resources/assets/css/icons.css" rel="stylesheet" type="text/css"/>
+        <link href="./resources/assets/css/style.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+	 
+	<ui:define name="ContainerPI">
+		<h:panelGroup>
+
+			<h:form> 
+  <p:dataTable var="app" value="#{dtBasicView.appointments}">
+   <p:ajax event="rowSelect" listener="#{dtBasicView.onRowSelect}"  />
+    <p:column headerText="appointmentId">
+        <h:outputText value="#{app.appointmentId}" />
+    </p:column>
+ 
+    <p:column headerText="date">
+        <h:outputText value="#{app.date}" />
+    </p:column>
+ 
+    <p:column headerText="disease">
+        <h:outputText value="#{app.disease}" />
+    </p:column>
+ 
+    <p:column headerText="state">
+        <h:outputText value="#{app.state}" />
+    </p:column>
+       <p:column headerText="Rate:"> 
+         <p:rating value="#{app.rate}">
+            <p:ajax event="rate" listener="#{ratingView.onrate}" />
+            <p:ajax event="cancel" listener="#{ratingView.oncancel}"  />
+        </p:rating>
+    </p:column>
+     
+             <p:column headerText="Save">  
+       
+        <p:commandButton  icon="ui-icon-check"   actionListener="#{dtBasicView.UpdateRateApp(app.rate,app.appointmentId)}" async="true" ajax="true"  id="iconOnly"  style="margin-right:20px;"  update="@form"   />
+              </p:column>
+</p:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

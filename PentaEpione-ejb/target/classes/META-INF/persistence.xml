@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="PentaEpione-ejb">
-		<jta-data-source>java:/MySqlDS</jta-data-source>
+		<jta-data-source>java:/sqlserver/ds</jta-data-source>
+		<class>model.Appointment</class>
+		<class>model.AspNetRole</class>
 		<class>model.AspNetUser</class>
+		<class>model.AspNetUserClaim</class>
+		<class>model.AspNetUserLogin</class>
+		<class>model.AspNetUserLoginPK</class>
 		<class>model.CategoriePost</class>
 		<class>model.Chat</class>
 		<class>model.Comment</class>
+		<class>model.Cours</class>
+		<class>model.Debreif</class>
 		<class>model.Post</class>
+		<class>model.Rate</class>
+		<class>model.Repport</class>
+		<class>model.Step</class>
 		<class>model.SubComment</class>
 		<!-- <class>model.AspNetRole</class>
 		<class>model.AspNetUserClaim</class>
@@ -30,7 +40,7 @@
 		 -->
 		
 		<properties>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.hbm2ddl.auto" value="update"/>
 		
 
 		</properties>

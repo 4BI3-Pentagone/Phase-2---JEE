@@ -260,6 +260,14 @@ public class AspNetUser implements Serializable {
 	public void setCours2(Cours cours2) {
 		this.cours2 = cours2;
 	}
+	
+	
+
+	public AspNetUser(String email, String userName) {
+		super();
+		this.email = email;
+		this.userName = userName;
+	}
 
 	@Override
 	public String toString() {

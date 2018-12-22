@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+
+import javax.jms.JMSPasswordCredential;
 import javax.persistence.*;
 
 
@@ -20,10 +22,10 @@ public class AspNetUserClaim implements Serializable {
 	private int id;
 
 	@Column(name="ClaimType")
-	private Object claimType;
+	private String claimType;
 
 	@Column(name="ClaimValue")
-	private Object claimValue;
+	private String claimValue;
 
 	//bi-directional many-to-one association to AspNetUser
 	@ManyToOne
@@ -41,19 +43,19 @@ public class AspNetUserClaim implements Serializable {
 		this.id = id;
 	}
 
-	public Object getClaimType() {
+	public String getClaimType() {
 		return this.claimType;
 	}
 
-	public void setClaimType(Object claimType) {
+	public void setClaimType(String claimType) {
 		this.claimType = claimType;
 	}
 
-	public Object getClaimValue() {
+	public String getClaimValue() {
 		return this.claimValue;
 	}
 
-	public void setClaimValue(Object claimValue) {
+	public void setClaimValue(String claimValue) {
 		this.claimValue = claimValue;
 	}
 

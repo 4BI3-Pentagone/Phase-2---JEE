@@ -20,7 +20,7 @@ public class AspNetRole implements Serializable {
 	private String id;
 
 	@Column(name="Name")
-	private Object name;
+	private String name;
 
 	public AspNetRole() {
 	}
@@ -33,11 +33,11 @@ public class AspNetRole implements Serializable {
 		this.id = id;
 	}
 
-	public Object getName() {
+	public String getName() {
 		return this.name;
 	}
 
-	public void setName(Object name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 

@@ -20,6 +20,12 @@
 			<artifactId>PentaEpione-ejb</artifactId>
 			<type>ejb</type>
 		</dependency>
+
+		<dependency>
+    <groupId>javax.ws.rs</groupId>
+    <artifactId>javax.ws.rs-api</artifactId>
+    <version>2.0-m02</version>
+   </dependency>
 	</dependencies>
 
 	<build>
@@ -32,6 +38,7 @@
 				<configuration>
 					<version>7</version>
 					<fileNameMapping>no-version</fileNameMapping>
+					<defaultLibBundleDir>lib</defaultLibBundleDir>
 				</configuration>
 			</plugin>
 			<plugin>

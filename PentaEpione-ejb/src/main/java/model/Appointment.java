@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 
@@ -14,15 +15,31 @@ import java.util.List;
 @Table(name="Appointments")
 @NamedQuery(name="Appointment.findAll", query="SELECT a FROM Appointment a")
 public class Appointment implements Serializable {
+	@Override
+	public String toString() {
+		return "Appointment [appointmentId=" + appointmentId + ", date=" + date + ", disease=" + disease + ", state="
+				+ state + ", aspNetUser1=" + aspNetUser1 + ", aspNetUser2=" + aspNetUser2 + ", debreifs=" + debreifs
+				+ "]";
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="AppointmentId")
 	private int appointmentId;
-
+	@Column(name="Rate")
+	private int  rate;
 	@Column(name="Date")
-	private Timestamp date;
+	private Date  date;
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
 
 	@Column(name="Disease")
 	private String disease;
@@ -45,7 +62,14 @@ public class Appointment implements Serializable {
 
 	public Appointment() {
 	}
-
+ 
+	public Appointment(int appointmentId, Date date, String disease, int state) {
+		super();
+		this.appointmentId = appointmentId;
+		this.date = date;
+		this.disease = disease;
+		this.state = state;
+	}
 	public int getAppointmentId() {
 		return this.appointmentId;
 	}
@@ -54,11 +78,11 @@ public class Appointment implements Serializable {
 		this.appointmentId = appointmentId;
 	}
 
-	public Timestamp getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 
-	public void setDate(Timestamp date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
