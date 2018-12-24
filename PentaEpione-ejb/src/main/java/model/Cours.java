@@ -21,7 +21,7 @@ public class Cours implements Serializable {
 	private int courseId;
 
 	//bi-directional many-to-one association to AspNetUser
-	@OneToMany(mappedBy="cours1")
+	@OneToMany(mappedBy="cours")
 	private List<AspNetUser> aspNetUsers;
 
 	//bi-directional one-to-one association to AspNetUser
@@ -50,14 +50,14 @@ public class Cours implements Serializable {
 
 	public AspNetUser addAspNetUser(AspNetUser aspNetUser) {
 		getAspNetUsers().add(aspNetUser);
-		aspNetUser.setCours1(this);
+		aspNetUser.setCours(this);
 
 		return aspNetUser;
 	}
 
 	public AspNetUser removeAspNetUser(AspNetUser aspNetUser) {
 		getAspNetUsers().remove(aspNetUser);
-		aspNetUser.setCours1(null);
+		aspNetUser.setCours(null);
 
 		return aspNetUser;
 	}

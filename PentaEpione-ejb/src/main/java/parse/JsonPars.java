@@ -1,12 +1,11 @@
 package parse;
 
-import org.json.*;
 
 
 public class JsonPars {
 	 
 	
-	 
+	/* 
 	 //Pour l'authentification
 	    public static String constructJSON(String Message, boolean Etat) {
 	        JSONObject obj = new JSONObject();
@@ -31,7 +30,7 @@ public class JsonPars {
 	            // TODO Auto-generated catch block
 	        }
 	        return obj.toString();
-	    }
+	    }*/
 	   
 	 
 }

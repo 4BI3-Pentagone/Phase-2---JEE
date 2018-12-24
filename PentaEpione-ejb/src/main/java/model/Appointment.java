@@ -22,6 +22,18 @@ public class Appointment implements Serializable {
 	@Column(name="AppointmentId")
 	private int appointmentId;
 
+	@Column(name="UserName")
+	private String userName;
+	@Column(name="Rate")
+	private int  rate;
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
+	}
+	
 	@Column(name="Date")
 	private Date date;
 
@@ -43,6 +55,14 @@ public class Appointment implements Serializable {
 	//bi-directional many-to-one association to Debreif
 	@OneToMany(mappedBy="appointment")
 	private List<Debreif> debreifs;
+
+	//bi-directional many-to-one association to Rate
+	@OneToMany(mappedBy="appointment")
+	private List<Rate> rates;
+
+	//bi-directional many-to-one association to Step
+	@OneToMany(mappedBy="appointment")
+	private List<Step> steps;
 
 	public Appointment() {
 	}
@@ -117,11 +137,56 @@ public class Appointment implements Serializable {
 		return debreif;
 	}
 
+	public List<Rate> getRates() {
+		return this.rates;
+	}
+
+	public void setRates(List<Rate> rates) {
+		this.rates = rates;
+	}
+
+	public Rate addRate(Rate rate) {
+		getRates().add(rate);
+		rate.setAppointment(this);
+
+		return rate;
+	}
+
+	public Rate removeRate(Rate rate) {
+		getRates().remove(rate);
+		rate.setAppointment(null);
+
+		return rate;
+	}
+
+	public List<Step> getSteps() {
+		return this.steps;
+	}
+
+	public void setSteps(List<Step> steps) {
+		this.steps = steps;
+	}
+
+	public Step addStep(Step step) {
+		getSteps().add(step);
+		step.setAppointment(this);
+
+		return step;
+	}
+
+	public Step removeStep(Step step) {
+		getSteps().remove(step);
+		step.setAppointment(null);
+
+		return step;
+	}
+
 	@Override
 	public String toString() {
 		return "Appointment [appointmentId=" + appointmentId + ", date=" + date + ", disease=" + disease + ", state="
 				+ state + ", aspNetUser1=" + aspNetUser1 + ", aspNetUser2=" + aspNetUser2 + ", debreifs=" + debreifs
-				+ "]";
+				+ ", rates=" + rates + ", steps=" + steps + "]";
 	}
+	
 
 }

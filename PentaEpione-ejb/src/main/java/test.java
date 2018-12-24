@@ -1,13 +1,13 @@
-
+/*
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import org.codehaus.jettison.json.JSONArray;
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 import WebService.clientEmel;
 import model.Appointment;
@@ -22,7 +22,7 @@ public class test {
 		clientEmel c = new clientEmel(2);
 		try {
 			JSONArray json = c
-					.readJsonFromUrl("http://localhost:54774/appoi/GetMyCourse?idp=046c1b17-2d4e-4996-92ba-d86c3690e02c"
+					.readJsonFromUrl("http://localhost:54774/appoi/GetMyCourse?idp=NULL"
 			// +id
 			);
 			ArrayList<Appointment> listeViste = new ArrayList<>();
@@ -56,3 +56,4 @@ public class test {
 	}
 
 }
+*/

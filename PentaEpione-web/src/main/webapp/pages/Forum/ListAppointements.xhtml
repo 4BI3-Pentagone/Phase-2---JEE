@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"    
+     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"    
+     template="/template/template.xhtml" 
+     xmlns:p="http://primefaces.org/ui"
+     >
+<ui:param name="page_name" value="Visit" />
+<ui:param name="param_page" value="Visit" />
+
+<ui:define name="ContainerPI">
+<style type="text/css">
+    .logo {
+        width: 5%
+    }
+ 
+    .detail {
+        width: 95%;
+        padding-left: 25px;
+    }
+ 
+    .detail td {
+        font-size: 24px;
+    }
+</style>
+ 
+ 
+<h:form id="form">
+        <h:panelGrid columns="2" style="width:100%" columnClasses="logo,detail">
+            <p:commandLink update=":form:carDetail" oncomplete="PF('carDialog').show()">
+                <f:setPropertyActionListener value="" target="" />
+<p:graphicImage url="/resources/images/bg-12.jpg" />
+
+            </p:commandLink>
+ 
+            <p:outputPanel>
+                <h:panelGrid columns="2" cellpadding="5">
+                    <h:outputText value="Doctor :" />
+                    <h:outputText value="aaaaaaaaaa" style="font-weight: bold "/>
+ 
+                             <h:outputText value="Id:" />
+                        <h:outputText value="#{car.appointmentId}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Year:" />
+                        <h:outputText value="#{car.date}" style="font-weight: bold"/>
+ 
+                        <h:outputText value="Color:" />
+                        <h:outputText value="#{car.disease}" style="font-weight: bold"/>
+                </h:panelGrid>
+            </p:outputPanel>
+        </h:panelGrid>
+        <hr />
+    
+ 
+    <p:dialog header="Car Info" widgetVar="carDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false">
+        <p:outputPanel id="carDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty dataListView.selectedCar}" columnClasses="label,value">
+                <f:facet name="header">
+                    <p:graphicImage name=""/> 
+                </f:facet>
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="" />
+ 
+                <h:outputText value="Year" />
+                <h:outputText value="" />
+ 
+                <h:outputText value="Color:" />
+                <h:outputText value="" style="color:#{dataListView.selectedCar.color}"/>
+ 
+                <h:outputText value="Price" />
+                <h:outputText value="" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+    
+    
+    
+    
+</h:form>
+</ui:define>
+      
+</ui:composition>
