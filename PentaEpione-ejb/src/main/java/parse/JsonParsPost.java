@@ -1,4 +1,4 @@
-package parse;
+/*package parse;
 
 import org.json.*;
 
@@ -35,3 +35,4 @@ public class JsonParsPost {
 	   
 	 
 }
+*/
