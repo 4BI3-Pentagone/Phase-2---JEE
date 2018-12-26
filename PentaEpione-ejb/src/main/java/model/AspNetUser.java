@@ -2,6 +2,9 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import org.hibernate.annotations.GenericGenerator;
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -15,9 +18,11 @@ import java.util.List;
 @NamedQuery(name="AspNetUser.findAll", query="SELECT a FROM AspNetUser a")
 public class AspNetUser implements Serializable {
 	private static final long serialVersionUID = 1L;
+	//static   int pref =0;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name="Id")
 	private String id;
 
@@ -45,7 +50,7 @@ public class AspNetUser implements Serializable {
 
 	@Column(name="Insuranceid")
 	private int insuranceid;
-
+	@Column
 	private String lastName;
 
 	@Column(name="LockoutEnabled")
@@ -108,6 +113,8 @@ public class AspNetUser implements Serializable {
 	private List<Rate> rates;
 
 	public AspNetUser() {
+	//	pref ++;
+	//	this.id="id-"+pref;
 	}
 
 	public String getId() {
@@ -402,16 +409,10 @@ public class AspNetUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AspNetUser [id=" + id + ", accessFailedCount=" + accessFailedCount + ", adress=" + adress
-				+ ", birthDate=" + birthDate + ", discriminator=" + discriminator + ", email=" + email
-				+ ", emailConfirmed=" + emailConfirmed + ", firstName=" + firstName + ", imageName=" + imageName
-				+ ", insuranceid=" + insuranceid + ", lastName=" + lastName + ", lockoutEnabled=" + lockoutEnabled
-				+ ", lockoutEndDateUtc=" + lockoutEndDateUtc + ", passwordHash=" + passwordHash + ", phoneNumber="
-				+ phoneNumber + ", phoneNumberConfirmed=" + phoneNumberConfirmed + ", securityStamp=" + securityStamp
-				+ ", speciality=" + speciality + ", twoFactorEnabled=" + twoFactorEnabled + ", userName=" + userName
-				+ ", motifs"+ appointments1+"" + appointments1 + ", appointments2=" + appointments2
-				+ ", cours=" + cours + ", chats1=" + chats1 + ", chats2=" + chats2 + ", rates=" + rates + "]";
+		return "AspNetUser [id=" + id + ", adress=" + adress + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", passwordHash=" + passwordHash + ", userName=" + userName + "]";
 	}
+
 	
 
 }

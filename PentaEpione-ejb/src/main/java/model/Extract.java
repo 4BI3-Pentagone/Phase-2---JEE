@@ -1,25 +1,46 @@
-package tn.esprit.epione.persistance;
+package model;
 
 import java.io.Serializable;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@XmlRootElement
-@XmlType
+ 
+@Entity
+@Table(name="Extract")
 public class Extract implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="IdEx")
+	private int idEx;
+	@Column
 private String lastname;
+	@Column
 private String firstname;
-
-private Adresse adresse;
+	@Column
+private String adresse;
+	@Column
 private String speciality_s;
+	@Column
 private String profile ;
+	@Column
 private String photo;
+	@Column
 private String telephone;
+	@Column
 private String password;
+	@Column
 private String lat ; 
+	@Column
 private String lng;
 
 
@@ -159,12 +180,12 @@ public void setSpeciality_s(String speciality_s) {
 
 
 
-@XmlAttribute
-public Adresse getAdresse() {
+
+public String getAdresse() {
 	return adresse;
 }
 	
-public void setAdresse(Adresse adresse) {
+public void setAdresse(String adresse) {
 	this.adresse = adresse;
 }
 
@@ -205,7 +226,7 @@ public void setPhoto(String photo) {
 
 @Override
 public String toString() {
-	return "lastname=" + lastname + ", firstname=" + firstname + ", adresse=" + adresse + ", specialite=" + speciality_s
+	return "id= "+idEx +"lastname=" + lastname + ", firstname=" + firstname + ", adresse=" + adresse + ", specialite=" + speciality_s
 			+ ", profile=" + profile + ", photo=" + photo +", telephone="+telephone;
 }
 

@@ -13,10 +13,13 @@
     				<!-- column header -->
     				<f:facet name="header">ID</f:facet>
     				<!-- row record -->
-    				#{o.id}
+    				#{o}
     			</p:column>
     		
 			
 </p:dataTable>
+	<h:form>
+<h:commandButton action="#{managedBeanEmel.doAdd()}" value="login" />
+	</h:form>
 </body> 
 </html>

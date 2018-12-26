@@ -8,40 +8,37 @@
         <dependent-module archiveName="PentaEpione-ejb.jar" deploy-path="/" handle="module:/resource/PentaEpione-ejb/PentaEpione-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jersey-bundle.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/sun/jersey/jersey-bundle/1.18/jersey-bundle-1.18.jar">
+        <dependent-module archiveName="hibernate-core.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-core/4.3.10.Final/hibernate-core-4.3.10.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jersey-json.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/sun/jersey/jersey-json/1.19.3/jersey-json-1.19.3.jar">
+        <dependent-module archiveName="jboss-logging.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jboss/logging/jboss-logging/3.1.3.GA/jboss-logging-3.1.3.GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jettison.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/codehaus/jettison/jettison/1.1/jettison-1.1.jar">
+        <dependent-module archiveName="jboss-logging-annotations.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jboss/logging/jboss-logging-annotations/1.2.0.Beta1/jboss-logging-annotations-1.2.0.Beta1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jackson-core-asl.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-core-asl/1.9.2/jackson-core-asl-1.9.2.jar">
+        <dependent-module archiveName="jboss-transaction-api_1.2_spec.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jboss/spec/javax/transaction/jboss-transaction-api_1.2_spec/1.0.0.Final/jboss-transaction-api_1.2_spec-1.0.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jackson-jaxrs.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-jaxrs/1.9.2/jackson-jaxrs-1.9.2.jar">
+        <dependent-module archiveName="dom4j.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/dom4j/dom4j/1.6.1/dom4j-1.6.1.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jackson-xc.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-xc/1.9.2/jackson-xc-1.9.2.jar">
+        <dependent-module archiveName="xml-apis.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/xml-apis/xml-apis/1.0.b2/xml-apis-1.0.b2.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jersey-core.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/sun/jersey/jersey-core/1.19.3/jersey-core-1.19.3.jar">
+        <dependent-module archiveName="hibernate-commons-annotations.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/hibernate/common/hibernate-commons-annotations/4.0.5.Final/hibernate-commons-annotations-4.0.5.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jsr311-api.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1.jar">
+        <dependent-module archiveName="hibernate-jpa-2.1-api.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/hibernate/javax/persistence/hibernate-jpa-2.1-api/1.0.0.Final/hibernate-jpa-2.1-api-1.0.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jackson-mapper-asl.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/codehaus/jackson/jackson-mapper-asl/1.9.13/jackson-mapper-asl-1.9.13.jar">
+        <dependent-module archiveName="javassist.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/javassist/javassist/3.18.1-GA/javassist-3.18.1-GA.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="jaxb-api.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/xml/bind/jaxb-api/2.3.1/jaxb-api-2.3.1.jar">
+        <dependent-module archiveName="antlr.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/antlr/antlr/2.7.7/antlr-2.7.7.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="javax.activation-api.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/javax/activation/javax.activation-api/1.2.0/javax.activation-api-1.2.0.jar">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="jaxb-impl.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/com/sun/xml/bind/jaxb-impl/2.0.1/jaxb-impl-2.0.1.jar">
+        <dependent-module archiveName="jandex.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jboss/jandex/1.1.0.Final/jandex-1.1.0.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>

@@ -1,0 +1,43 @@
+--<ScriptOptions statementTerminator="GO"/>
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE dbo.AspNetUsers (
+	Id VARCHAR(2147483647) NOT NULL,
+	FirstName VARCHAR(2147483647),
+	lastName VARCHAR(2147483647),
+	birthDate DATETIME,
+	adress VARCHAR(2147483647),
+	ImageName VARCHAR(2147483647),
+	Email VARCHAR(2147483647),
+	EmailConfirmed BIT,
+	PasswordHash VARCHAR(2147483647),
+	SecurityStamp VARCHAR(2147483647),
+	PhoneNumber VARCHAR(2147483647),
+	PhoneNumberConfirmed BIT,
+	TwoFactorEnabled BIT,
+	LockoutEndDateUtc DATETIME,
+	LockoutEnabled BIT,
+	AccessFailedCount INT,
+	UserName VARCHAR(2147483647),
+	Insuranceid INT,
+	Discriminator VARCHAR(2147483647) NOT NULL,
+	course_CourseId INT,
+	Speciality INT
+)
+GO
+
+CREATE INDEX IX_course_CourseId ON dbo.AspNetUsers (course_CourseId ASC)
+WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
+GO
+
+SET ANSI_PADDING OFF
+GO
+

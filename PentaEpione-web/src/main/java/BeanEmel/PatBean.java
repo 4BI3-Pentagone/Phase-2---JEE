@@ -47,7 +47,7 @@ public class PatBean {
                 
                 
                 patient.setFirstName(obj.get("FirstName").toString());
-                patient.setId(obj.get("Id").toString());
+         //       patient.setId(obj.get("Id").toString());
                 patient.setEmail(obj.get("Email").toString());
          //       patient.setBirthDate(obj.get("birthDate").toString());
                 patient.setLastName(obj.get("lastName").toString());

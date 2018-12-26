@@ -17,20 +17,28 @@
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
 		</dependency>
-		
+	
+<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.3.10.Final</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
+			
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-ejb-plugin</artifactId>
 				<version>${version.ejb.plugin}</version>
 				<configuration>
 					<ejbVersion>3.2</ejbVersion>
 				</configuration>
+				
 			</plugin>
+			
 		</plugins>
 	</build>
 
