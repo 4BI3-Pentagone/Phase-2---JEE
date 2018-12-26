@@ -66,4 +66,10 @@ public class Rate implements Serializable {
 		this.aspNetUser = aspNetUser;
 	}
 
+	public Rate(float note ) {
+		super();
+		this.note = note; 
+	}
+
+	
 }

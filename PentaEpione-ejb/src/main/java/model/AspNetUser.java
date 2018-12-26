@@ -406,6 +406,14 @@ public class AspNetUser implements Serializable {
 
 		return rate;
 	}
+	
+	
+
+	public AspNetUser(String email, String userName) {
+		super();
+		this.email = email;
+		this.userName = userName;
+	}
 
 	@Override
 	public String toString() {
