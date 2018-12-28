@@ -1,6 +1,9 @@
 package BeanEmel;
 
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +14,11 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import org.codehaus.jettison.json.JSONException;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -18,8 +26,7 @@ import org.jsoup.select.Elements;
 
 import com.itextpdf.text.DocumentException;
 
-import emel.Util;
-
+import model.Adresse;
 import model.AspNetUser;
 import model.Extract;
 import model.Specialityy;
@@ -313,7 +320,7 @@ public class ExtractionReso implements ExtractionRemote {
 	@Override
 	public AspNetUser AddDoctor(String nom, String prenom, String specialie, String ville, String password,
 			String email) throws IOException {
-		Util ut = new Util();
+	//	Util ut = new Util();
 		Extract e = new Extract();
 		e = searchexistingdoctor(nom, prenom, specialie, ville);
 		if (e != null) {
@@ -465,6 +472,30 @@ public class ExtractionReso implements ExtractionRemote {
 			list.add(sp);
 		}
 		return list;
+	}
+
+	@Override
+	public void getFrenshCities() throws  IOException, ParseException, JSONException {
+		// TODO Auto-generated method stub
+        JSONParser parser = new JSONParser();
+
+		JSONArray a = (JSONArray) parser.parse(new FileReader("c:\\fr.json"));
+
+		  for (Object o : a)
+		  {
+		    JSONObject person = (JSONObject) o;
+
+		    String name = (String) person.get("city");
+		    System.out.println(name);
+
+		    String city = (String) person.get("lag");
+		    System.out.println(city);
+
+		    String job = (String) person.get("job");
+		    System.out.println(job);
+
+		    
+		  }
 	}
 
 }

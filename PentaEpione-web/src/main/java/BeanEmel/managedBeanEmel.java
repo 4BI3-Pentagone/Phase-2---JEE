@@ -9,6 +9,9 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.codehaus.jettison.json.JSONException;
+import org.json.simple.parser.ParseException;
+
 import com.itextpdf.text.DocumentException;
 
 import model.AspNetUser;
@@ -49,10 +52,10 @@ public class managedBeanEmel {
 	}
 
 	@PostConstruct
-	private void init() throws IOException {
+	private void init() throws IOException, ParseException, JSONException {
 		mypatient = extract.All();
 		spelist=extract.ExtractSpeciality();
-
+		extract.getFrenshCities();
 	}
 	
 

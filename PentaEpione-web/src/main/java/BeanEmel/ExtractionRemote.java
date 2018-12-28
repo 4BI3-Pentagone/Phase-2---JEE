@@ -6,8 +6,14 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
+import org.codehaus.jackson.JsonParseException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jettison.json.JSONException;
+import org.json.simple.parser.ParseException;
+
 import com.itextpdf.text.DocumentException;
 
+import model.Adresse;
 import model.AspNetUser;
 import model.Extract;
 import model.Specialityy;
@@ -26,4 +32,5 @@ public void test(String e,int b) throws IOException;
 //public Extract profile(String url) throws IOException ;
 public void getPDF()throws DocumentException, IOException;
 public List<Specialityy> ExtractSpeciality()  throws IOException;
+public void getFrenshCities()  throws  IOException, ParseException , JSONException;
 }

@@ -8,13 +8,13 @@
 	<ui:param name="page_name" value="Epione -Show contrat" />
 	<ui:param name="param_page" value="Show Posts" />
 	<style type="text/css">
-    .label, .value {
-        vertical-align: top
-    }
- 
-    .output {
-        font-weight: bold
-    }
+.label, .value {
+	vertical-align: top
+}
+
+.output {
+	font-weight: bold
+}
 </style>
 	<h:head>
 
@@ -54,7 +54,10 @@
 			</h:panelGrid>
 
 			<p:separator />
-
+<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
+ 
+ 
+       <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
 			<h:commandButton action="#{managedBeanEmel.dofind()}"
 				icon="pi pi-check" />
 
