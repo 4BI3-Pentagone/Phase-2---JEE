@@ -9,39 +9,94 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import com.itextpdf.text.DocumentException;
+
 import model.AspNetUser;
-
-
+import model.Specialityy;
 
 @ManagedBean
 @ViewScoped
 public class managedBeanEmel {
-	//@EJB
-	//PatBean pb 
+	// @EJB
+	// PatBean pb
 
 	@EJB
 	ExtractionReso extract;
 	List<AspNetUser> mypatient = new ArrayList<AspNetUser>();
-	
-			//pb.getPatient("59fdcc1c-9b1c-4caf-819d-f1a25b697eaf");
+	String option;
+	// pb.getPatient("59fdcc1c-9b1c-4caf-819d-f1a25b697eaf");
+	Specialityy spe;
+	List<Specialityy> spelist = new ArrayList<Specialityy>();
 
-	public List<AspNetUser> get()
-	{return extract.All();
-}
-	@PostConstruct
-	private void init()  {
-	mypatient=extract.All();
-	//	extract.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa","email@e.com");
+	public ExtractionReso getExtract() {
+		return extract;
 	}
+
+	public void setExtract(ExtractionReso extract) {
+		this.extract = extract;
+	}
+
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
+	}
+
+	public List<AspNetUser> get() {
+		return extract.All();
+	}
+
+	@PostConstruct
+	private void init() throws IOException {
+		mypatient = extract.All();
+		spelist=extract.ExtractSpeciality();
+
+	}
+	
+
+	public Specialityy getSpe() {
+		return spe;
+	}
+
+	public void setSpe(Specialityy spe) {
+		this.spe = spe;
+	}
+
+	public List<Specialityy> getSpelist() {
+		return spelist;
+	}
+
+	public void setSpelist(List<Specialityy> spelist) {
+		this.spelist = spelist;
+	}
+
 	public List<AspNetUser> getMypatient() {
 		return mypatient;
 	}
-	public void setMypatient(List<AspNetUser> mypatient)  {
+
+	public void setMypatient(List<AspNetUser> mypatient) {
 		this.mypatient = mypatient;
 	}
-	public void doAdd() throws IOException
-	{		  System.out.println( extract.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa","email@e.com"));
-		//return extract.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa","email@e.com");
-}
-	
+
+	public void doAdd() throws IOException {
+		System.out.println(extract.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa", "email@e.com"));
+		// return extract.AddDoctor("meunier", "cecile", "medecin-generaliste",
+		// "rouen", "pa","email@e.com");
+	}
+
+	public void dofind() throws IOException {
+		System.out.println(extract.SearchBySpecialityandPlace("medecin-generaliste", "aix-en-provence"));
+
+	}
+
+	public void doPrint() throws IOException, DocumentException {
+		extract.getPDF();
+	}
+
+	public void doSpe() throws IOException {
+		System.out.println(extract.ExtractSpeciality());
+	}
+
 }

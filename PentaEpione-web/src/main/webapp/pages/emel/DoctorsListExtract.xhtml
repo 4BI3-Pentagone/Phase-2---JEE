@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Epione -Show contrat" />
+	<ui:param name="param_page" value="Show Posts" />
+	<style type="text/css">
+    .label, .value {
+        vertical-align: top
+    }
+ 
+    .output {
+        font-weight: bold
+    }
+</style>
+	<h:head>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+		<link rel="shortcut icon"
+			href="./resources/assets/images/Souslogo.jpeg" />
+		<link rel="stylesheet"
+			href="./resources/assets/plugins/morris/morris.css" />
+		<link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet"
+			type="text/css" />
+		<link href="./resources/assets/css/icons.css" rel="stylesheet"
+			type="text/css" />
+		<link href="./resources/assets/css/style.css" rel="stylesheet"
+			type="text/css" />
+	</h:head>
+
+	<ui:define name="ContainerPI">
+		<h:form id="form">
+			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
+				columnClasses="label, value">
+				<p:outputLabel for="advanced" value="Advanced:" />
+				<p:selectOneListbox id="advanced" value="#{managedBeanEmel.spe}"
+					var="t" filter="true" filterMatchMode="contains">
+					<f:selectItems value="#{managedBeanEmel.spelist}" var="theme"
+						itemLabel="#{theme.name}" itemValue="#{theme}" />
+					<p:column>
+						<h:graphicImage
+							name="showcase/images/themeswitcher/themeswitcher-omega.png"
+							styleClass="ui-theme" />
+					</p:column>
+					<p:column>
+						<h:outputText value="#{t.name}" />
+					</p:column>
+				</p:selectOneListbox>
+			</h:panelGrid>
+
+			<p:separator />
+
+			<h:commandButton action="#{managedBeanEmel.dofind()}"
+				icon="pi pi-check" />
+
+/<!-- //////////
+			<p:dataView var="car" value="#{ext}" rows="12" paginator="true"
+				rowsPerPageTemplate="6,12,16"
+				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+
+				<p:dataViewGridItem>
+					<p:panel header="#{car.id}" style="text-align:center">
+						<h:panelGrid columns="1" style="width:100%">
+							<p:graphicImage name="demo/images/car/#{car.brand}.gif" />
+
+							<h:outputText value="#{car.brand}" />
+
+							<p:commandLink update=":form:carDetail"
+								oncomplete="PF('carDialog').show()" title="View Detail">
+								<h:outputText styleClass="ui-icon pi pi-search"
+									style="margin:0 auto;" />
+								<f:setPropertyActionListener value="#{car}"
+									target="#{dataGridView.selectedCar}" />
+							</p:commandLink>
+						</h:panelGrid>
+					</p:panel>
+				</p:dataViewGridItem>
+ -->
+			<!-- 	<p:dataViewListItem>
+					<h:panelGrid columns="3" style="width:100%"
+						columnClasses="logo,detail">
+						<p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
+
+						<p:outputPanel>
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputText value="Id:" />
+								<h:outputText value="#{car.id}" style="font-weight: bold" />
+
+								<h:outputText value="Year:" />
+								<h:outputText value="#{car.year}" style="font-weight: bold" />
+
+								<h:outputText value="Color:" />
+								<h:outputText value="#{car.color}" style="font-weight: bold" />
+							</h:panelGrid>
+						</p:outputPanel>
+
+						<p:commandLink update=":form:carDetail"
+							oncomplete="PF('carDialog').show()" title="View Detail">
+							<h:outputText styleClass="ui-icon pi pi-search"
+								style="margin:0 auto;" />
+							<f:setPropertyActionListener value="#{car}"
+								target="#{dataGridView.selectedCar}" />
+						</p:commandLink>
+					</h:panelGrid>
+				</p:dataViewListItem>
+			</p:dataView>
+
+			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
+				showEffect="fade" hideEffect="fade" resizable="false">
+				<p:outputPanel id="carDetail" style="text-align:center;">
+					<p:panelGrid columns="2"
+						rendered="#{not empty dataGridView.selectedCar}"
+						columnClasses="label,value">
+						<f:facet name="header">
+							<p:graphicImage
+								name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif" />
+						</f:facet>
+
+						<h:outputText value="Id:" />
+						<h:outputText value="#{dataGridView.selectedCar.id}" />
+
+						<h:outputText value="Year" />
+						<h:outputText value="#{dataGridView.selectedCar.year}" />
+
+						<h:outputText value="Color:" />
+						<h:outputText value="#{dataGridView.selectedCar.color}"
+							style="color:#{dataGridView.selectedCar.color}" />
+
+						<h:outputText value="Price" />
+						<h:outputText value="$#{dataGridView.selectedCar.price}" />
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog> -->
+		</h:form>
+	</ui:define>
+
+</ui:composition>
