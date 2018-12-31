@@ -42,6 +42,9 @@ public class Extract implements Serializable {
 	@Column
 	private String lng;
 
+
+
+	
 	public String getLastname() {
 		return lastname;
 	}
@@ -130,7 +133,7 @@ public class Extract implements Serializable {
 	public String toString() {
 		return "id= " + idEx + " lastname=" + lastname + ", firstname=" + firstname + ", adresse=" + adresse
 				+ ", specialite=" + speciality_s + ", profile=" + profile + ", photo=" + photo + ", telephone="
-				+ telephone +"\n";
+				+ telephone +", description="+password+" lag/lat ="+lng +"/ " +lat+"\n";
 	}
 
 }

@@ -27,6 +27,7 @@ import org.jsoup.select.Elements;
 import com.itextpdf.text.DocumentException;
 
 import model.Adresse;
+import model.Adresses;
 import model.AspNetUser;
 import model.Extract;
 import model.Specialityy;
@@ -140,7 +141,7 @@ public class ExtractionReso implements ExtractionRemote {
 		String photo;
 		String profil;
 		int pg = 0;
-		//int nb = 0;
+		// int nb = 0;
 		boolean end = false;
 		ArrayList<Extract> list = new ArrayList<>();
 		while (end == false) {
@@ -148,7 +149,8 @@ public class ExtractionReso implements ExtractionRemote {
 			String url = "https://www.doctolib.fr/" + spec + "/" + place + "?page=" + pg;
 			doc = Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
 
-			//Elements tableRows = doc.getElementsByClass("dl-search-result-presentation");
+			// Elements tableRows =
+			// doc.getElementsByClass("dl-search-result-presentation");
 			endpage = doc.getElementsByClass("pagination-links").last();
 
 			String next = endpage.getElementsByClass("next").get(0).getElementsByTag("a").attr("href");
@@ -163,7 +165,7 @@ public class ExtractionReso implements ExtractionRemote {
 		System.out.println("nombre de pase " + pg);
 		////////////////
 		for (i = 0; i <= pg; i++) {
-			System.out.println("west l for"+i);
+			System.out.println("west l for" + i);
 
 			String url = "https://www.doctolib.fr/" + spec + "/" + place + "?page=" + i;
 			System.out.println(url);
@@ -171,7 +173,7 @@ public class ExtractionReso implements ExtractionRemote {
 			doc = Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
 
 			Elements tableRows1 = doc.getElementsByClass("dl-search-result-presentation");
-			//endpage = doc.getElementsByClass("pagination-links").last();
+			// endpage = doc.getElementsByClass("pagination-links").last();
 
 			// String next =
 			// endpage.getElementsByClass("next").get(0).getElementsByTag("a").attr("href");
@@ -191,27 +193,17 @@ public class ExtractionReso implements ExtractionRemote {
 
 				if (!nom.isEmpty() && !specialite.isEmpty()) {
 
-					//
-					// String fulladdres = adresse.get(0).text();
-					// String villeetcode = "";
-					// String ville = "";
-					// String rue = "";
-					// String[] naming2 = fulladdres.split(",", 2);
-					// villeetcode = naming2[1];
-					// String[] villes = villeetcode.split(" ", 3);
-					// ville = villes[2];
-					// rue = naming2[0];
-					// Adresse adresses = new Adresse(rue, ville);
-					// ex.setAdresse(adresses);
-					//
+					String fulladdres = adresse.get(0).text();
 
 					ex.setLastname(nom.get(0).text());
 					ex.setSpeciality_s(specialite.get(0).text());
 					ex.setPhoto(photo);
 					ex.setProfile("www.doctolib.fr" + profil);
+					ex.setAdresse(fulladdres);
+					System.out.println("adr--------- " + fulladdres);
 
 				}
-				System.out.println("ex------ "+ex);
+				System.out.println("ex111- " + ex);
 
 				list.add(ex);
 
@@ -288,14 +280,15 @@ public class ExtractionReso implements ExtractionRemote {
 			System.out.println(lng);
 			specialite = tableRows.first().getElementsByClass("dl-profile-header-speciality");
 			photo = tableRows.get(0).getElementsByTag("img").attr("src");
-			/*
-			 * if (!tabrow.isEmpty())
-			 * 
-			 * { telephone =
-			 * tabrow.get(1).getElementsByClass("dl-text dl-text-body").text();
-			 * // System.out.println("phone= " + telephone);
-			 * ex.setTelephone(telephone); }
-			 */
+
+			if (!tabrow.isEmpty())
+
+			{
+				telephone = tabrow.get(1).getElementsByClass("dl-text dl-text-body").text();
+				// System.out.println("phone= " + telephone);
+				ex.setTelephone(telephone);
+			}
+
 			System.out.println("phone= " + telephone);
 			// if (!nom.isEmpty() && !specialite.isEmpty()) {
 			String[] naming = fullname.get(0).text().split("[^A-Z]");
@@ -327,7 +320,7 @@ public class ExtractionReso implements ExtractionRemote {
 	@Override
 	public AspNetUser AddDoctor(String nom, String prenom, String specialie, String ville, String password,
 			String email) throws IOException {
-	//	Util ut = new Util();
+		// Util ut = new Util();
 		Extract e = new Extract();
 		e = searchexistingdoctor(nom, prenom, specialie, ville);
 		if (e != null) {
@@ -391,69 +384,105 @@ public class ExtractionReso implements ExtractionRemote {
 
 	}
 
-	/*
-	 * @Override public Extract profile(String url) throws IOException {
-	 * 
-	 * System.out.println(url); Document doc; Elements fullname; String lastname
-	 * = ""; String firstname = ""; Elements adresse; Elements ad; Elements
-	 * specialite; String photo; String telephone = ""; Extract ex = new
-	 * Extract(); doc =
-	 * Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
-	 * 
-	 * Elements tableRows = doc.getElementsByClass("dl-profile-wrapper");
-	 * Elements tableRows2 = doc.getElementsByClass("dl-profile-card"); Elements
-	 * tabrow = doc.getElementsByClass("dl-profile-box"); if
-	 * (!tableRows.isEmpty() && !tableRows2.isEmpty())
-	 * 
-	 * { fullname = tableRows.first().select("span"); adresse =
-	 * tableRows2.get(1).getElementsByClass("dl-profile-text"); ad =
-	 * tableRows2.get(1).getElementsByClass("dl-profile-doctor-place-map");
-	 * String lat = "" + Double.valueOf(
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * substring(
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * indexOf("\"lat\":") + 6,
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * indexOf(",",
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal")
-	 * .indexOf("\"lat\":") + 6))); System.out.println(lat); String lng = "" +
-	 * Double.valueOf(
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * substring(
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * indexOf("\"lng\":") + 6,
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").
-	 * indexOf("}",
-	 * doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal")
-	 * .indexOf("\"lng\":") + 6))); System.out.println(lng); specialite =
-	 * tableRows.first().getElementsByClass("dl-profile-header-speciality");
-	 * photo = tableRows.get(0).getElementsByTag("img").attr("src"); if
-	 * (!tabrow.isEmpty() && tabrow.size() > 1)
-	 * 
-	 * { telephone = tabrow.get(1).getElementsByClass("dl-display-flex").text();
-	 * ex.setTelephone(telephone); } System.out.println("phone= " + telephone);
-	 * 
-	 * String[] naming = fullname.get(0).text().split("[^A-Z]"); for (String e :
-	 * naming) { if (e.length() > 1) lastname = lastname + " " + e; } firstname
-	 * = fullname.get(0).text().substring(0, (fullname.get(0).text().length() -
-	 * lastname.length()));
-	 * 
-	 * String fulladdres = adresse.get(0).text(); String villeetcode = "";
-	 * String ville = ""; String rue = ""; String[] naming2 =
-	 * fulladdres.split(",", 2); villeetcode = naming2[1]; String[] villes =
-	 * villeetcode.split(" ", 3); ville = villes[2]; rue = naming2[0]; //
-	 * Adresse adresses = new Adresse(rue, ville); // ex.setAdresse(adresses);
-	 * 
-	 * ex.setLastname(lastname); ex.setFirstname(firstname);
-	 * ex.setSpeciality_s(specialite.get(0).text()); ex.setPhoto(photo);
-	 * ex.setLat(lat); ex.setLng(lng);
-	 * 
-	 * return ex; // } } else System.out.
-	 * println("doctor not found in doctlib, please make sure of your name and city"
-	 * ); return null;
-	 * 
-	 * }
-	 */
+	@Override
+	public Extract profile(String url) throws IOException {
+
+		System.out.println(url);
+		Document doc;
+		Elements fullname;
+		String lastname = "";
+		String firstname = "";
+		Elements adresse;
+		Elements ad;
+		Elements specialite;
+		String photo;
+		String telephone = "";
+		Extract ex = new Extract();
+		doc = Jsoup.connect("https://" + url).userAgent("Mozilla").timeout(25000).get();
+
+		Elements tableRows = doc.getElementsByClass("dl-profile-wrapper");
+		Elements tableRows2 = doc.getElementsByClass("dl-profile-card");
+		Elements tabrow = doc.getElementsByClass("dl-profile-box");
+		if (!tableRows.isEmpty() && !tableRows2.isEmpty())
+
+		{
+			fullname = tableRows.first().select("span");
+			adresse = tableRows2.get(1).getElementsByClass("dl-profile-text");
+			ad = tableRows2.get(1).getElementsByClass("dl-profile-doctor-place-map");
+			String lat = "" + Double.valueOf(
+					doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").substring(
+							doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").indexOf("\"lat\":")
+									+ 6,
+							doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").indexOf(",",
+									doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal")
+											.indexOf("\"lat\":") + 6)));
+			System.out.println("laaat" + lat);
+			ex.setLat(lat);
+			String lng = "" + Double.valueOf(
+					doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").substring(
+							doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").indexOf("\"lng\":")
+									+ 6,
+							doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal").indexOf("}",
+									doc.select(".dl-profile-doctor-place-map-img").attr("data-map-modal")
+											.indexOf("\"lng\":") + 6)));
+			System.out.println("lnnng" + lng);
+			ex.setLng(lng);
+			Elements des = doc.getElementsByClass("dl-profile-card-content");
+			//System.out.println("--------\n" + des.toString());
+
+			int start = des.toString().indexOf("dl-profile-text js-bio dl-profile-bio");
+			//System.out.println("--------start" + start);
+			// js-profile-more-bio
+			int endd = des.toString().indexOf("js-profile-more-bio");
+			//System.out.println("--------end" + endd);
+			String description = des.toString().substring(start + 40, endd - 18);
+			//System.out.println("--------desss" + description);
+
+			specialite = tableRows.first().getElementsByClass("dl-profile-header-speciality");
+			photo = tableRows.get(0).getElementsByTag("img").attr("src");
+			if (!tabrow.isEmpty() && tabrow.size() > 1)
+
+			{
+				telephone = tabrow.get(1).getElementsByClass("dl-display-flex").text();
+				ex.setTelephone(telephone);
+			}
+			System.out.println("phone= " + telephone);
+
+			String[] naming = fullname.get(0).text().split("[^A-Z]");
+			for (String e : naming) {
+				if (e.length() > 1)
+					lastname = lastname + " " + e;
+			}
+			firstname = fullname.get(0).text().substring(0, (fullname.get(0).text().length() - lastname.length()));
+
+			String fulladdres = adresse.get(0).text();
+			String villeetcode = "";
+			String ville = "";
+			String rue = "";
+			String[] naming2 = fulladdres.split(",", 2);
+			villeetcode = naming2[1];
+			String[] villes = villeetcode.split(" ", 3);
+			ville = villes[2];
+			rue = naming2[0];
+			Adresses adresses = new Adresses(rue, ville);
+			ex.setAdresse(fulladdres);
+
+			ex.setLastname(lastname);
+			ex.setFirstname(firstname);
+			ex.setSpeciality_s(specialite.get(0).text());
+			ex.setPhoto(photo);
+			//ex.setLat(lat);
+			//ex.setLng(lng);
+			ex.setTelephone(telephone);
+			ex.setPassword(description);
+			System.out.println("descccc" + ex.getPassword());
+			return ex;
+			// }
+
+		} else
+			System.out.println("doctor not found in doctlib, please make sure of your name and city");
+		return null;
+	}
 
 	public void getPDF() throws DocumentException, IOException {
 		getPdf p = new getPdf();
@@ -467,44 +496,43 @@ public class ExtractionReso implements ExtractionRemote {
 		ArrayList<Specialityy> list = new ArrayList<>();
 		String url = "https://www.doctolib.fr/specialities";
 		doc = Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
-	    Elements tableRowss = doc.getElementsByClass("list-unstyled");
+		Elements tableRowss = doc.getElementsByClass("list-unstyled");
 		Elements tableRows = tableRowss.select("li");
 
-		for (Element row : tableRows) { 
+		for (Element row : tableRows) {
 			Specialityy sp = new Specialityy();
 			// System.out.println("row "+row.text());
 			String s = row.getElementsByTag("a").attr("href");
-			 System.out.println("element :" + s.substring(1));
-			 sp.setName( s.substring(1));
+			// System.out.println("element :" + s.substring(1));
+			sp.setName(s.substring(1));
 			list.add(sp);
 		}
 		return list;
 	}
 
 	@Override
-	public   List<Adresse> getFrenshCities() throws  IOException, ParseException, JSONException {
+	public List<Adresse> getFrenshCities() throws IOException, ParseException, JSONException {
 		// TODO Auto-generated method stub
-        JSONParser parser = new JSONParser();
+		JSONParser parser = new JSONParser();
 
 		JSONArray array = (JSONArray) parser.parse(new FileReader("c:\\fr.json"));
-		  List<Adresse> cit = new ArrayList<>();
+		List<Adresse> cit = new ArrayList<>();
 
-		  for (Object o : array)
-		  {
-		    JSONObject adresseJson = (JSONObject) o;
-		    Adresse a = new Adresse();
-		    String name = (String) adresseJson.get("city");
-		    a.setCity(name);
+		for (Object o : array) {
+			JSONObject adresseJson = (JSONObject) o;
+			Adresse a = new Adresse();
+			String name = (String) adresseJson.get("city");
+			a.setCity(name);
 
-		    String lat = (String) adresseJson.get("lat");
-		    a.setLat(lat);
-		    
-		    String lng = (String) adresseJson.get("lng");
-		    a.setLng(lng);
+			String lat = (String) adresseJson.get("lat");
+			a.setLat(lat);
 
-		    cit.add(a);
-		  }
-		  return cit;
+			String lng = (String) adresseJson.get("lng");
+			a.setLng(lng);
+
+			cit.add(a);
+		}
+		return cit;
 	}
 
 }

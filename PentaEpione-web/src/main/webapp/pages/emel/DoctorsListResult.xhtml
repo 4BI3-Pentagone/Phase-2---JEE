@@ -6,12 +6,12 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
 	<ui:param name="page_name" value="Epione -Show contrat" />
-	<ui:param name="param_page" value="Show Posts" /> 
+	<ui:param name="param_page" value="Show Posts" />
 
-<h:head></h:head> 
+	<h:head></h:head>
 
-		<ui:define name="ContainerPI">
-	
+	<ui:define name="ContainerPI">
+
 		<h:form id="form">
 			<p:dataGrid var="car" value="#{managedBeanEmel.extlist}" columns="3"
 				layout="grid" rows="12" paginator="true" id="cars"
@@ -42,7 +42,7 @@
 				</p:panel>
 
 			</p:dataGrid>
-  
+
 			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
 				showEffect="fade" hideEffect="fade" resizable="false">
 				<p:outputPanel id="carDetail" style="text-align:center;">
@@ -50,21 +50,24 @@
 						rendered="#{not empty managedBeanEmel.ext}"
 						columnClasses="label,value">
 						<f:facet name="header">
-							<img src="#{car.photo}" class="rounded-circle" />
 						</f:facet>
 
-						<h:outputText value="Id:" />
+						<h:outputText value="Name:" />
 						<h:outputText value="#{managedBeanEmel.ext.lastname}" />
 
-						<h:outputText value="Year" />
+						<h:outputText value="Speciality" />
 						<h:outputText value="#{managedBeanEmel.ext.speciality_s}" />
-
+						<h:outputText value="full adresse" />
+						<h:outputText value="#{managedBeanEmel.ext.adresse}" />
+						<!-- 						<h:commandLink action="Profil" value="profil" /> -->
+						<p:commandButton id="addButton" value="Profil"
+							action="#{managedBeanEmel.Profil()}" />
 
 					</p:panelGrid>
 				</p:outputPanel>
 			</p:dialog>
 		</h:form>
 
-</ui:define> 
+	</ui:define>
 </ui:composition>
 

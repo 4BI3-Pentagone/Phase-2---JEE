@@ -13,6 +13,10 @@ import javax.faces.bean.ViewScoped;
 
 import org.codehaus.jettison.json.JSONException;
 import org.json.simple.parser.ParseException;
+import org.primefaces.model.map.DefaultMapModel;
+import org.primefaces.model.map.LatLng;
+import org.primefaces.model.map.MapModel;
+import org.primefaces.model.map.Marker;
 
 import com.itextpdf.text.DocumentException;
 
@@ -29,6 +33,7 @@ public class managedBeanEmel {
 
 	@EJB
 	ExtractionReso extract;
+
 	List<AspNetUser> mypatient = new ArrayList<AspNetUser>();
 	String option;
 	// pb.getPatient("59fdcc1c-9b1c-4caf-819d-f1a25b697eaf");
@@ -38,17 +43,27 @@ public class managedBeanEmel {
 	static List<Extract> extlist = new ArrayList<Extract>();
 	Adresse adr = new Adresse();
 	Extract ext = new Extract();
+	static Extract profile = new Extract();
+	// public static LatLng coord1;
+	static MapModel pos = new DefaultMapModel();
+
 	@PostConstruct
 	private void init() throws IOException, ParseException, JSONException {
-	
+
 		mypatient = extract.All();
 		spelist = extract.ExtractSpeciality();
 		// extract.getFrenshCities();
 		citlist = extract.getFrenshCities();
 		System.out.println("init" + adr);
 		System.out.println("init" + spe);
+		// pos = new DefaultMapModel();
+		// System.out.println("prooooooooo"+extract.profile("www.doctolib.fr/osteopathe/saint-laurent-du-var/remi-picart"));
+		// LatLng coord1 = new LatLng(36.748807, 10.305867);
+		// extract.profile(ext.getProfile());
+		// pos.addOverlay(new Marker(coord1, "Konyaalti"));
+
 	}
-//	selecteddoct
+	// selecteddoct
 
 	public ExtractionReso getExtract() {
 		return extract;
@@ -102,6 +117,14 @@ public class managedBeanEmel {
 		this.spelist = spelist;
 	}
 
+	public Extract getProfile() {
+		return profile;
+	}
+
+	public void setProfile(Extract profile) {
+		this.profile = profile;
+	}
+
 	public List<AspNetUser> getMypatient() {
 		return mypatient;
 	}
@@ -137,10 +160,27 @@ public class managedBeanEmel {
 		System.out.println("s" + spe.getName().toString());
 		String s = spe.getName().toString().substring(spe.getName().indexOf("=") + 1, spe.getName().indexOf("]"));
 		String a = adr.getCity().toString().substring(adr.getCity().indexOf("=") + 1, adr.getCity().indexOf("]"));
-		//extract.SearchBySpecialityandPlace(s, a.toLowerCase());
+		// extract.SearchBySpecialityandPlace(s, a.toLowerCase());
 		extlist.clear();
-		System.out.println(extlist=extract.SearchBySpecialityandPlace(s,a.toLowerCase()));
-	return"DoctorsListResult?faces-redirect=true";
+		System.out.println(extlist = extract.SearchBySpecialityandPlace(s, a.toLowerCase()));
+		return "DoctorsListResult?faces-redirect=true";
+	}
+
+	public String Profil() throws IOException {
+		profile = extract.profile(ext.getProfile());
+		System.out.println("profilede+" + profile.getAdresse());
+		// final LatLng coord1 = new
+		// LatLng(Double.parseDouble(profile.getLat()),
+		// Double.parseDouble(profile.getLng()));
+		// extract.profile(ext.getProfile());
+		// System.out.println("lat "+Double.parseDouble(profile.getLat()));
+		// System.out.println("lng "+Double.parseDouble(profile.getLng()));
+
+		// pos.addOverlay(new Marker(coord1, "a"));
+		pos = new DefaultMapModel();
+		LatLng coord1 = new LatLng(Double.parseDouble(profile.getLat()),Double.parseDouble(profile.getLng()));
+		pos.addOverlay(new Marker(coord1, "Dr."+profile.getLastname()+" cabinet"));
+		return "Profil?faces-redirect=true";
 	}
 
 	public void doPrint() throws IOException, DocumentException {
@@ -154,4 +194,13 @@ public class managedBeanEmel {
 	public void doCit() throws IOException, ParseException, JSONException {
 		System.out.println(extract.getFrenshCities());
 	}
+
+	public MapModel getPos() {
+		return pos;
+	}
+
+	public void setPos(MapModel pos) {
+		this.pos = pos;
+	}
+
 }
