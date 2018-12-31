@@ -16,10 +16,10 @@ public class Adresse {
 	String lng;
 	String population;
 	public String getCity() {
-		return city.toLowerCase();
+		return city;
 	}
 	public void setCity(String city) {
-		this.city = city.toLowerCase();
+		this.city = city;
 	}
 	public String getAdmin() {
 		return admin;
@@ -73,8 +73,8 @@ public class Adresse {
 	}
 	@Override
 	public String toString() {
-		return "Adresse [city=" + city + ", admin=" + admin + ", country=" + country + ", lat=" + lat + ", Lng=" + lng
-				+ "]";
+		return "Adresse [city=" + city + "] ";
+				
 	}
 	
 	

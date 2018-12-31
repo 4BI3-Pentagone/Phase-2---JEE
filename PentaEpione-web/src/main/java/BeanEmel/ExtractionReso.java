@@ -140,7 +140,7 @@ public class ExtractionReso implements ExtractionRemote {
 		String photo;
 		String profil;
 		int pg = 0;
-		int nb = 0;
+		//int nb = 0;
 		boolean end = false;
 		ArrayList<Extract> list = new ArrayList<>();
 		while (end == false) {
@@ -148,7 +148,7 @@ public class ExtractionReso implements ExtractionRemote {
 			String url = "https://www.doctolib.fr/" + spec + "/" + place + "?page=" + pg;
 			doc = Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
 
-			Elements tableRows = doc.getElementsByClass("dl-search-result-presentation");
+			//Elements tableRows = doc.getElementsByClass("dl-search-result-presentation");
 			endpage = doc.getElementsByClass("pagination-links").last();
 
 			String next = endpage.getElementsByClass("next").get(0).getElementsByTag("a").attr("href");
@@ -163,19 +163,23 @@ public class ExtractionReso implements ExtractionRemote {
 		System.out.println("nombre de pase " + pg);
 		////////////////
 		for (i = 0; i <= pg; i++) {
+			System.out.println("west l for"+i);
 
 			String url = "https://www.doctolib.fr/" + spec + "/" + place + "?page=" + i;
+			System.out.println(url);
+
 			doc = Jsoup.connect(url).userAgent("Mozilla").timeout(25000).get();
 
-			Elements tableRows = doc.getElementsByClass("dl-search-result-presentation");
-			endpage = doc.getElementsByClass("pagination-links").last();
+			Elements tableRows1 = doc.getElementsByClass("dl-search-result-presentation");
+			//endpage = doc.getElementsByClass("pagination-links").last();
 
 			// String next =
 			// endpage.getElementsByClass("next").get(0).getElementsByTag("a").attr("href");
 			// System.out.println("neex" +
 			// endpage.getElementsByClass("next").get(0).getElementsByTag("a").attr("href"));
 
-			for (Element row : tableRows) {
+			for (Element row : tableRows1) {
+				System.out.println("------------------ forex ");
 
 				Extract ex = new Extract();
 
@@ -207,6 +211,8 @@ public class ExtractionReso implements ExtractionRemote {
 					ex.setProfile("www.doctolib.fr" + profil);
 
 				}
+				System.out.println("ex------ "+ex);
+
 				list.add(ex);
 
 			}
@@ -214,6 +220,7 @@ public class ExtractionReso implements ExtractionRemote {
 
 		}
 		System.out.println("last" + i);
+
 		return list;
 
 	}
@@ -475,27 +482,29 @@ public class ExtractionReso implements ExtractionRemote {
 	}
 
 	@Override
-	public void getFrenshCities() throws  IOException, ParseException, JSONException {
+	public   List<Adresse> getFrenshCities() throws  IOException, ParseException, JSONException {
 		// TODO Auto-generated method stub
         JSONParser parser = new JSONParser();
 
-		JSONArray a = (JSONArray) parser.parse(new FileReader("c:\\fr.json"));
+		JSONArray array = (JSONArray) parser.parse(new FileReader("c:\\fr.json"));
+		  List<Adresse> cit = new ArrayList<>();
 
-		  for (Object o : a)
+		  for (Object o : array)
 		  {
-		    JSONObject person = (JSONObject) o;
+		    JSONObject adresseJson = (JSONObject) o;
+		    Adresse a = new Adresse();
+		    String name = (String) adresseJson.get("city");
+		    a.setCity(name);
 
-		    String name = (String) person.get("city");
-		    System.out.println(name);
-
-		    String city = (String) person.get("lag");
-		    System.out.println(city);
-
-		    String job = (String) person.get("job");
-		    System.out.println(job);
-
+		    String lat = (String) adresseJson.get("lat");
+		    a.setLat(lat);
 		    
+		    String lng = (String) adresseJson.get("lng");
+		    a.setLng(lng);
+
+		    cit.add(a);
 		  }
+		  return cit;
 	}
 
 }

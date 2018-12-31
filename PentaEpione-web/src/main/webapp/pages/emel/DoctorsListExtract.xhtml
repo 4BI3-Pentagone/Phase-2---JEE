@@ -15,6 +15,16 @@
 .output {
 	font-weight: bold
 }
+
+.value {
+	font-weight: bold;
+}
+
+.ui-autocomplete-itemtip {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
 </style>
 	<h:head>
 
@@ -38,108 +48,33 @@
 			<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5"
 				columnClasses="label, value">
 				<p:outputLabel for="advanced" value="Advanced:" />
-				<p:selectOneListbox id="advanced" value="#{managedBeanEmel.spe}"
-					var="t" filter="true" filterMatchMode="contains">
+				<p:selectOneListbox id="advanced" value="#{managedBeanEmel.spe.name}"
+					 filter="true" filterMatchMode="contains">
 					<f:selectItems value="#{managedBeanEmel.spelist}" var="theme"
 						itemLabel="#{theme.name}" itemValue="#{theme}" />
+				
 					<p:column>
-						<h:graphicImage
-							name="showcase/images/themeswitcher/themeswitcher-omega.png"
-							styleClass="ui-theme" />
+						<h:outputText value="#{managedBeanEmel.spe}" />
 					</p:column>
+				</p:selectOneListbox>
+
+
+				<p:selectOneListbox id="advanced2" value="#{managedBeanEmel.adr.city}"
+				 filter="true" filterMatchMode="contains">
+					<f:selectItems value="#{managedBeanEmel.citlist}" var="theme2"
+						itemLabel="#{theme2.city}" itemValue="#{theme2}" />
+					
 					<p:column>
-						<h:outputText value="#{t.name}" />
+						<h:outputText value="#{managedBeanEmel.adr}" />
 					</p:column>
 				</p:selectOneListbox>
 			</h:panelGrid>
 
+
 			<p:separator />
-<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=true"></script>
- 
- 
-       <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID" style="width:100%;height:400px" />
-			<h:commandButton action="#{managedBeanEmel.dofind()}"
-				icon="pi pi-check" />
 
-/<!-- //////////
-			<p:dataView var="car" value="#{ext}" rows="12" paginator="true"
-				rowsPerPageTemplate="6,12,16"
-				paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-				gridIcon="pi pi-th-large" listIcon="pi pi-bars">
+			<h:commandButton value="find" action="#{managedBeanEmel.dofind()}" />
 
-				<p:dataViewGridItem>
-					<p:panel header="#{car.id}" style="text-align:center">
-						<h:panelGrid columns="1" style="width:100%">
-							<p:graphicImage name="demo/images/car/#{car.brand}.gif" />
-
-							<h:outputText value="#{car.brand}" />
-
-							<p:commandLink update=":form:carDetail"
-								oncomplete="PF('carDialog').show()" title="View Detail">
-								<h:outputText styleClass="ui-icon pi pi-search"
-									style="margin:0 auto;" />
-								<f:setPropertyActionListener value="#{car}"
-									target="#{dataGridView.selectedCar}" />
-							</p:commandLink>
-						</h:panelGrid>
-					</p:panel>
-				</p:dataViewGridItem>
- -->
-			<!-- 	<p:dataViewListItem>
-					<h:panelGrid columns="3" style="width:100%"
-						columnClasses="logo,detail">
-						<p:graphicImage name="demo/images/car/#{car.brand}-big.gif" />
-
-						<p:outputPanel>
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputText value="Id:" />
-								<h:outputText value="#{car.id}" style="font-weight: bold" />
-
-								<h:outputText value="Year:" />
-								<h:outputText value="#{car.year}" style="font-weight: bold" />
-
-								<h:outputText value="Color:" />
-								<h:outputText value="#{car.color}" style="font-weight: bold" />
-							</h:panelGrid>
-						</p:outputPanel>
-
-						<p:commandLink update=":form:carDetail"
-							oncomplete="PF('carDialog').show()" title="View Detail">
-							<h:outputText styleClass="ui-icon pi pi-search"
-								style="margin:0 auto;" />
-							<f:setPropertyActionListener value="#{car}"
-								target="#{dataGridView.selectedCar}" />
-						</p:commandLink>
-					</h:panelGrid>
-				</p:dataViewListItem>
-			</p:dataView>
-
-			<p:dialog header="Car Info" widgetVar="carDialog" modal="true"
-				showEffect="fade" hideEffect="fade" resizable="false">
-				<p:outputPanel id="carDetail" style="text-align:center;">
-					<p:panelGrid columns="2"
-						rendered="#{not empty dataGridView.selectedCar}"
-						columnClasses="label,value">
-						<f:facet name="header">
-							<p:graphicImage
-								name="demo/images/car/#{dataGridView.selectedCar.brand}-big.gif" />
-						</f:facet>
-
-						<h:outputText value="Id:" />
-						<h:outputText value="#{dataGridView.selectedCar.id}" />
-
-						<h:outputText value="Year" />
-						<h:outputText value="#{dataGridView.selectedCar.year}" />
-
-						<h:outputText value="Color:" />
-						<h:outputText value="#{dataGridView.selectedCar.color}"
-							style="color:#{dataGridView.selectedCar.color}" />
-
-						<h:outputText value="Price" />
-						<h:outputText value="$#{dataGridView.selectedCar.price}" />
-					</p:panelGrid>
-				</p:outputPanel>
-			</p:dialog> -->
 		</h:form>
 	</ui:define>
 
