@@ -99,10 +99,12 @@ public class PatBean {
     }
 
    
-    public void getCourse(String id){    clientEmel c = new clientEmel(2);
+    public List<Appointment>  getCourse(String id){
+    	clientEmel c = new clientEmel(2);
+    	  ArrayList<Appointment> listeViste = new ArrayList<>();
     try {
                 JSONArray json = c.readJsonFromUrl("http://localhost:54774/appoi/GetMyCourse?idp="+id);
-                ArrayList<Appointment> listeViste = new ArrayList<>();
+              
     			// Cours c =new Cours();
     			for (int i = 0, count = json.length(); i < count; i++) {
     				Appointment a = new Appointment();
@@ -130,5 +132,6 @@ public class PatBean {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+    return listeViste;
     }
 }

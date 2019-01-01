@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Epione -Show contrat" />
+	<ui:param name="param_page" value="Show Posts" />
+	<h:head>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+		<link rel="shortcut icon"
+			href="./resources/assets/images/Souslogo.jpeg" />
+		<link rel="stylesheet"
+			href="./resources/assets/plugins/morris/morris.css" />
+		<link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet"
+			type="text/css" />
+		<link href="./resources/assets/css/icons.css" rel="stylesheet"
+			type="text/css" />
+		<link href="./resources/assets/css/style.css" rel="stylesheet"
+			type="text/css" />
+	</h:head>
+
+	<!-- <ui:define name="ContainerPI">
+		<h:panelGroup>
+		<h:form>
+			<h:outputText value="full adresse" />
+						<h:outputText value="#{managedBeanEmel.profile.adresse}" />
+
+		</h:form>
+		</h:panelGroup>
+	</ui:define> -->
+	<style type="text/css">
+.ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
+	text-align: center;
+}
+</style>
+
+
+	<ui:define name="ContainerPI">
+		<h:outputText value="#{managedBeanEmel.profile.lat}" id="lat" />
+		<h:outputText value="#{managedBeanEmel.profile.lng}" id="lng" />
+
+		<script type="text/javascript"
+			src="https://maps.google.com/maps/api/js?sensor=true"></script>
+
+		<script type="text/javascript"
+			src="https://maps.google.com/maps/api/js?sensor=false"></script>
+
+
+		<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID"
+			style="width:100%;height:400px" model="#{managedBeanEmel.pos}" />
+		<h3 style="margin-top: 0">Basic</h3>
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<img src="#{managedBeanEmel.profile.photo}" class="rounded-circle" />
+
+			</f:facet>
+			<h:outputText value="Name:" />
+			<h:outputText value="#{managedBeanEmel.profile.lastname}" />
+			<h:outputText value="Name:" />
+			<h:outputText value="#{managedBeanEmel.profile.firstname}" />
+			<h:outputText value="Speciality:" />
+			<h:outputText value="#{managedBeanEmel.profile.speciality_s}" />
+
+			<h:outputText value="Phone Number:" />
+			<h:outputText value="#{managedBeanEmel.profile.telephone}" />
+
+		</p:panelGrid>
+
+		<h3>Description</h3>
+		<p:panelGrid columns="1" layout="grid" cellpadding="10">
+			<h:outputText value="#{managedBeanEmel.profile.password}" />
+
+		</p:panelGrid>
+
+		<!-- <h3>Grouping</h3>
+		<p:panelGrid style="margin-top:20px">
+			<f:facet name="header">
+				<p:row>
+					<p:column colspan="7">1995-96 NBA Playoffs</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2">Conf. Semifinals</p:column>
+					<p:column colspan="2">Conf. Finals</p:column>
+					<p:column colspan="2">NBA Finals</p:column>
+					<p:column>Champion</p:column>
+				</p:row>
+
+			</f:facet>
+
+			<p:row>
+				<p:column style="font-weight: bold;">Seattle</p:column>
+				<p:column style="font-weight: bold;">4</p:column>
+
+				<p:column rowspan="2" style="font-weight: bold;">Seattle</p:column>
+				<p:column rowspan="2" style="font-weight: bold;">4</p:column>
+
+				<p:column rowspan="5">Seattle</p:column>
+				<p:column rowspan="5">2</p:column>
+
+				<p:column rowspan="11" style="font-weight: bold;">Chicago</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column>Houston</p:column>
+				<p:column>0</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="4" styleClass="ui-widget-header">
+					<p:spacer height="0" />
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column style="font-weight: bold;">Utah</p:column>
+				<p:column style="font-weight: bold;">4</p:column>
+
+				<p:column rowspan="2">Utah</p:column>
+				<p:column rowspan="2">3</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column>San Antonio</p:column>
+				<p:column>2</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="6" styleClass="ui-widget-header">
+					<p:spacer height="0" />
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column style="font-weight: bold;">Chicago</p:column>
+				<p:column style="font-weight: bold;">4</p:column>
+
+				<p:column rowspan="2" style="font-weight: bold;">Chicago</p:column>
+				<p:column rowspan="2" style="font-weight: bold;">4</p:column>
+
+				<p:column rowspan="5" style="font-weight: bold;">Chicago</p:column>
+				<p:column rowspan="5" style="font-weight: bold;">4</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column>New York</p:column>
+				<p:column>1</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column colspan="4" styleClass="ui-widget-header">
+					<p:spacer height="0" />
+				</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column>Atlanta</p:column>
+				<p:column>1</p:column>
+
+				<p:column rowspan="2">Orlando</p:column>
+				<p:column rowspan="2">0</p:column>
+			</p:row>
+
+			<p:row>
+				<p:column style="font-weight: bold;">Orlando</p:column>
+				<p:column style="font-weight: bold;">4</p:column>
+			</p:row>
+
+
+			<f:facet name="footer">
+				<p:row>
+					<p:column colspan="4" style="text-align: right">
+                Finals MVP
+            </p:column>
+					<p:column colspan="3" rowspan="3">
+                Michael Jordan (Chicago)
+            </p:column>
+				</p:row>
+
+				<p:row>
+					<p:column colspan="4" style="text-align: right">
+                Season MVP
+            </p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="4" style="text-align: right">
+                Top Scorer
+            </p:column>
+				</p:row>
+			</f:facet> 
+		</p:panelGrid>-->
+
+
+	</ui:define>
+
+
+</ui:composition>

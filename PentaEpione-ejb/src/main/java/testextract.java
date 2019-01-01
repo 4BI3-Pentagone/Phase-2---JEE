@@ -7,6 +7,7 @@ import javax.naming.NamingException;
 import service.ExtractionRemote;
 import service.ExtractionReso;
 
+
 public class testextract {
 
 	public static void main(String[] args) throws IOException, NamingException {
@@ -17,6 +18,7 @@ public class testextract {
 	
 */
 		ExtractionReso x = new ExtractionReso();
+		//ExtractionReso x = new ExtractionReso();
 		//x.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa","email@e.com");
 	//System.out.println(x.All());
 	}

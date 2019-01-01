@@ -262,14 +262,16 @@ public class ExtractionReso implements ExtractionRemote {
 			System.out.println(lng);
 			specialite = tableRows.first().getElementsByClass("dl-profile-header-speciality");
 			photo = tableRows.get(0).getElementsByTag("img").attr("src");
-			/*
-			 * if (!tabrow.isEmpty())
-			 * 
-			 * { telephone =
-			 * tabrow.get(1).getElementsByClass("dl-text dl-text-body").text();
-			 * // System.out.println("phone= " + telephone);
-			 * ex.setTelephone(telephone); }
-			 */
+
+			
+			 if (!tabrow.isEmpty())
+			 
+			  { telephone =
+			  tabrow.get(1).getElementsByClass("dl-text dl-text-body").text();
+			  // System.out.println("phone= " + telephone);
+			 ex.setTelephone(telephone); }
+
+			 
 			System.out.println("phone= " + telephone);
 			// if (!nom.isEmpty() && !specialite.isEmpty()) {
 			String[] naming = fullname.get(0).text().split("[^A-Z]");
@@ -354,7 +356,10 @@ public class ExtractionReso implements ExtractionRemote {
 		} else {
 			System.out.println("doctor not found in doctlib, please make sure of your name and city");
 		}
+
 		/*Extract eee = new Extract();
+
+		Extract eee = new Extract();
 		eee.setAdresse("aaaaaa");
 		eee.setFirstname("eeeeeeeeeeeeeeeee");
 		eee.setLastname("aa");
@@ -365,6 +370,8 @@ public class ExtractionReso implements ExtractionRemote {
 		eee.setSpeciality_s("5555");
 		eee.setTelephone("telephone");
 		System.out.println(eee);
+
+		em.persist(eee);
 		em.persist(eee);*/
 		return null;
 	}
@@ -462,5 +469,6 @@ public class ExtractionReso implements ExtractionRemote {
 		return null;
 
 	}
+
 
 }

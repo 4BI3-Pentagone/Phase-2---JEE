@@ -2,6 +2,8 @@ package model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import java.util.List;
 @NamedQuery(name="AspNetUser.findAll", query="SELECT a FROM AspNetUser a")
 public class AspNetUser implements Serializable {
 	private static final long serialVersionUID = 1L;
+	//static   int pref =0;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -108,6 +111,8 @@ public class AspNetUser implements Serializable {
 	private List<Rate> rates;
 
 	public AspNetUser() {
+	//	pref ++;
+	//	this.id="id-"+pref;
 	}
 
 	public String getId() {
@@ -398,6 +403,14 @@ public class AspNetUser implements Serializable {
 		rate.setAspNetUser(null);
 
 		return rate;
+	}
+	
+	
+
+	public AspNetUser(String email, String userName) {
+		super();
+		this.email = email;
+		this.userName = userName;
 	}
 
 	@Override

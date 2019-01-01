@@ -8,9 +8,10 @@ import javax.persistence.*;
  * The persistent class for the Messages database table.
  * 
  */
-@Entity
+/**@Entity
 @Table(name="Messages")
-@NamedQuery(name="Message.findAll", query="SELECT m FROM Message m")
+@NamedQuery(name="Message.findAll", query="SELECT m FROM Message m") 
+*/
 public class Message implements Serializable {
 	private static final long serialVersionUID = 1L;
 
