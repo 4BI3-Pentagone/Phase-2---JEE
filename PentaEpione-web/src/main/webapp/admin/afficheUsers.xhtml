@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Users</title>
+            </f:facet>
+</h:head>
+ <h:body>
+ 
+ <p:layout fullPage="true">
+
+                  <p:layoutUnit position="north" size="10%" resizable="true" closable="false" collapsible="true">
+               <div style="background-image: url('../ressources/header.jpg'); height: 100%; "> </div> 
+   		   </p:layoutUnit>
+   		   
+     	   <p:layoutUnit position="east" size="230" resizeWhileDragging="true">
+           <f:facet name="header" >
+				    <Strong> </Strong>
+				    <h:form>
+				        <p><h:commandLink value="Déconnexion" action="#{userBean.logout()}" icon="ui-icon-power" /></p>
+				        
+				    </h:form>
+              </f:facet>   
+     	  </p:layoutUnit>
+
+			<p:layoutUnit position="south"  size="65" style="text-align: center" closable="true" collapsible="true">
+  					<f:facet name="footer">
+			        <p:row>
+			            <p:column colspan="2">
+			                   <img src="../ressources/logo.png" width="100" height="60" alt="header"/>
+			            </p:column>	   
+			        </p:row>
+					</f:facet>
+            </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="260" header="Menu" collapsible="true">
+                 <h:form>
+                 
+                    
+                    <p:menu>
+                    <p:submenu icon="ui-icon-home">
+                    	<p:menuitem value="Accueil" outcome="/admin/Home" icon="ui-icon-home"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Users">
+                    	<p:menuitem value="Ajout Users" outcome="/admin/users" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Users" outcome="/admin/afficheUsers" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    
+                    <p:submenu label="Agents">
+                    	<p:menuitem value="Ajout Agents" outcome="/admin/staff" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Agents" outcome="/admin/afficheAgent" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Gestion des Flux">
+                    	<p:menuitem value="Affectation" outcome="/admin/addaffectation" icon="ui-icon-circle-arrow-e"/>
+                      	<p:menuitem value="Flux" outcome="/admin/addFlux" icon="ui-icon-signal-diag"/>
+                    	<p:menuitem value="Prévu" outcome="/admin/schedule" icon="ui-icon-calendar"/>
+                    </p:submenu>
+                    </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+<p:layoutUnit position="center">
+
+	
+    <h:form id="f1">  
+     
+        
+        <p:dataTable value="#{userBean.displayCenter()}" var="displayCenter" id="displayCenter" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                paginator="true" rows="10" styleClass="root" editable="true" style="margin-bottom:20px" widgetVar="centersTable" selection="#{userBean.selectedUser}" rowKey="#{displayCenter.idUser}" 
+                emptyMessage="Aucun utilisateur trouvé avec des critères donnés" filteredValue="#{userBean.filteredUser}" selectionMode="single" showEffect="blind" hideEffect="explode" scrollable="true" >
+               <f:facet name="header">
+        Liste d'Utilisateurs 
+		<p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+        <p:columnToggler datasource="displayCenter" trigger="toggler" />
+			</f:facet>
+ 		<f:facet name="header">
+            <p:outputPanel>
+                <h:outputText value="Rechercher:" />
+                <p:inputText id="globalFilter" onkeyup="PF('centersTable').filter()" style="width:150px" placeholder="Entrez un mot-clef"/>
+            </p:outputPanel>
+        </f:facet>
+        
+
+                <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/excel.png" width="30"/>
+                <p:dataExporter type="xls" target="displayCenter" fileName="displayCenter" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/pdf.png" width="30"/>
+                <p:dataExporter type="pdf" target="displayCenter" fileName="displayCenter"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage value="/ressources/icons/csv.png" width="30"/>
+                <p:dataExporter type="csv" target="displayCenter" fileName="displayCenter" />
+            </h:commandLink>
+ 
+           
+        </f:facet>
+        <p:column width="200">
+                <f:facet name="header">Identifiant</f:facet>
+                <h:outputText value="#{displayCenter.idUser}" />
+            </p:column>
+            <p:column headerText="Nom" filterBy="#{displayCenter.nom}" sortBy="#{displayCenter.nom}" filterMatchMode="startsWith" style="width:80px">           
+                <f:facet name="header" styleClass="customHeader">Nom</f:facet>
+                <h:outputText value="#{displayCenter.nom}" />
+            </p:column>
+            <p:column width="200">
+                <f:facet name="header">Prenom</f:facet>
+                <h:outputText value="#{displayCenter.prenom}" />
+            </p:column>
+           
+				
+		<p:column width="200">
+                <f:facet name="header">Role</f:facet>
+                <h:outputText value="#{displayCenter.role}" />
+        </p:column>
+
+
+
+            <p:column width="100">
+                <f:facet name="header">Mot de Passe</f:facet>
+                <h:outputText value="#{displayCenter.password}" />
+            </p:column>
+            
+           
+        </p:dataTable>
+        
+        <p:contextMenu for="displayCenter">
+        <p:menuitem value="View" update="centerDetail" icon="ui-icon-search" oncomplete="PF('centerDialog').show()"/>
+        <p:menuitem value="Delete" update="displayCenter" icon="ui-icon-trash" actionListener="#{userBean.deleteUser()}"/>
+
+    </p:contextMenu>
+    
+    <p:commandButton value="Imprimé le tableau" type="button" icon="ui-icon-print" style="display:block;margin-bottom: 20px">
+    <p:printer target="displayCenter" />
+	</p:commandButton>
+ 
+    <p:dialog header=" Info Utilisateur" widgetVar="centerDialog" modal="true" showEffect="explode" hideEffect="bounce"
+     resizable="false" appendToBody="true" style="z-index: 999 !important;" position ="center" appendTo="@(body)">
+    
+        <p:outputPanel id="centerDetail" style="text-align:center;">
+            <p:panelGrid  columns="2" rendered="#{not empty userBean.selectedUser}" columnClasses="label,value">
+                
+ 
+                <h:outputText value="Id:" />
+                <h:outputText value="#{userBean.selectedUser.idUser}" />
+ 
+                <h:outputText value="Nom" />
+                <h:outputText value="#{userBean.selectedUser.nom}" />
+ 
+                <h:outputText value="Prenom" />
+                <h:outputText value="#{userBean.selectedUser.prenom}"/>
+                
+                <h:outputText value="Role" />
+                <h:outputText value="#{userBean.selectedUser.role}" />
+                
+                <h:outputText value="Mot de passe" />
+                <h:outputText value="#{userBean.selectedUser.password}" />
+            </p:panelGrid>
+        </p:outputPanel>
+    </p:dialog>
+         
+
+	
+  <!--    <p:commandButton value="Export as XML" ajax="false" >
+        <p:dataExporter type="xml" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export as CSV" ajax="false" >
+        <p:dataExporter type="csv" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export Table as Excel" ajax="false" >
+        <p:dataExporter type="xls" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+    <p:commandButton value="Export Table as PDF" ajax="false" >
+        <p:dataExporter type="pdf" target="displayCenter" fileName="irmc-center"/>
+    </p:commandButton>
+      -->
+    
+    
+ 
+    </h:form>
+    		</p:layoutUnit>
+		
+</p:layout>
+
+ </h:body>
+ </f:view>
+</html>

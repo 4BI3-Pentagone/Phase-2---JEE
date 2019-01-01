@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      > 
+
+<h:head>
+<script type="text/javascript">
+    function handleDrop(event, ui) {
+        var droppedFlux = ui.draggable;
+ 
+        droppedFlux.fadeOut('fast');
+    }
+</script>
+</h:head> 
+<body> 
+ <p:layout fullPage="true">
+
+                
+
+			 <p:layoutUnit position="north" size="10%" resizable="true" closable="false" collapsible="true">
+               <div style="background-image: url('../ressources/header.jpg'); height: 100%; "> </div> 
+   		   </p:layoutUnit>
+   		   
+     	   <p:layoutUnit position="east" size="230" resizeWhileDragging="true">
+           <f:facet name="header" >
+				    <Strong> </Strong>
+				    <h:form>
+				        <p><h:commandLink value="Déconnexion" action="#{userBean.logout()}" icon="ui-icon-power" /></p>
+				        
+				    </h:form>
+              </f:facet>   
+     	  </p:layoutUnit>
+
+			<p:layoutUnit position="south"  size="65" style="text-align: center" closable="true" collapsible="true">
+  					<f:facet name="footer">
+			        <p:row>
+			            <p:column colspan="2">
+			                   <img src="../ressources/logo.png" width="100" height="60" alt="header"/>
+			            </p:column>	   
+			        </p:row>
+					</f:facet>
+            </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="260" header="Menu" collapsible="true">
+                 <h:form>
+                 
+                    
+                    <p:menu>
+                    <p:submenu icon="ui-icon-home">
+                    	<p:menuitem value="Accueil" outcome="/admin/Home" icon="ui-icon-home"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Users">
+                    	<p:menuitem value="Ajout Users" outcome="/admin/users" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Users" outcome="/admin/afficheUsers" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    
+                    <p:submenu label="Agents">
+                    	<p:menuitem value="Ajout Agents" outcome="/admin/staff" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Agents" outcome="/admin/afficheAgent" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Gestion des Flux">
+                    	<p:menuitem value="Affectation" outcome="/admin/addaffectation" icon="ui-icon-circle-arrow-e"/>
+                      	<p:menuitem value="Flux" outcome="/admin/addFlux" icon="ui-icon-signal-diag"/>
+                    	<p:menuitem value="Prévu" outcome="/admin/schedule" icon="ui-icon-calendar"/>
+                    </p:submenu>
+                    </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+
+		<p:layoutUnit position="center">
+		
+ <f:view>
+<h:form id="FluxForm">
+    <p:fieldset id="availableFluxField" legend="Available Flux">
+        <p:dataTable id="availableFlux" var="f" value="#{affectationBean.flux}">
+            <p:column style="width:20px">
+                <h:outputText id="dragIcon" styleClass="ui-icon ui-icon-arrow-4" />
+                <p:draggable for="dragIcon" revert="true" helper="clone"/>
+            </p:column>
+ 
+            <p:column headerText="Id">
+                <h:outputText value="#{f.id}" />
+            </p:column>
+ 
+            <p:column headerText="Intitule">
+                <h:outputText value="#{f.intitule}" />
+            </p:column>
+ 
+            <p:column headerText="Charge Horaire">
+                <h:outputText value="#{f.charge_horaire}" />
+            </p:column>
+
+        </p:dataTable>
+    </p:fieldset>
+ 
+    <p:fieldset id="selectedFlux" legend="Selected Flux" style="margin-top:20px">
+        <p:outputPanel id="dropArea">
+            <h:outputText value="!!!Drop here!!!" rendered="#{empty affectationBean.droppedFlux}" style="font-size:24px;" />
+            <p:dataTable id="selectedFluxTable" var="f" value="#{affectationBean.droppedFlux}" rendered="#{not empty affectationBean.droppedFlux}">
+                <p:column headerText="Id">
+                    <h:outputText value="#{f.id}" />
+                </p:column>
+ 
+                <p:column headerText="Year">
+                    <h:outputText value="#{f.intitule}" />
+                </p:column>
+ 
+                <p:column headerText="Charge Horaire">
+                    <h:outputText value="#{f.charge_horaire}" />
+                </p:column>
+
+            </p:dataTable>
+        </p:outputPanel>
+    </p:fieldset>
+ 
+    <p:droppable for="selectedFlux" tolerance="touch" activeStyleClass="ui-state-highlight" datasource="availableFlux" onDrop="handleDrop">
+        <p:ajax listener="#{affectationBean.OnDropFlux}" update="dropArea availableFlux" />
+    </p:droppable>
+    
+    <p:commandButton value="Confirmer" action="#{affectationBean.comfirm()}"></p:commandButton>
+ 
+</h:form>
+</f:view>
+</p:layoutUnit>
+</p:layout>
+</body> 
+</html>

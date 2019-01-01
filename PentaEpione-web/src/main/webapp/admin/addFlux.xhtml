@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      
+       >
+<h:head></h:head> 
+<h:body> 
+ <p:layout fullPage="true">
+
+                 <p:layoutUnit position="north" size="10%" resizable="true" closable="false" collapsible="true">
+               <div style="background-image: url('../ressources/header.jpg'); height: 100%; "> </div> 
+   		   </p:layoutUnit>
+   		   
+     	   <p:layoutUnit position="east" size="230" resizeWhileDragging="true">
+           <f:facet name="header" >
+				    <Strong> </Strong>
+				    <h:form>
+				        <p><h:commandLink value="Déconnexion" action="#{userBean.logout()}" icon="ui-icon-power" /></p>
+				        
+				    </h:form>
+              </f:facet>   
+     	  </p:layoutUnit>
+
+			<p:layoutUnit position="south"  size="65" style="text-align: center" closable="true" collapsible="true">
+  					<f:facet name="footer">
+			        <p:row>
+			            <p:column colspan="2">
+			                   <img src="../ressources/logo.png" width="100" height="60" alt="header"/>
+			            </p:column>	   
+			        </p:row>
+					</f:facet>
+            </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="260" header="Menu" collapsible="true">
+                 <h:form>
+                 
+                    
+                    <p:menu>
+                    <p:submenu icon="ui-icon-home">
+                    	<p:menuitem value="Accueil" outcome="/admin/Home" icon="ui-icon-home"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Users">
+                    	<p:menuitem value="Ajout Users" outcome="/admin/users" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Users" outcome="/admin/afficheUsers" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    
+                    <p:submenu label="Agents">
+                    	<p:menuitem value="Ajout Agents" outcome="/admin/staff" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Agents" outcome="/admin/afficheAgent" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Gestion des Flux">
+                    	<p:menuitem value="Affectation" outcome="/admin/addaffectation" icon="ui-icon-circle-arrow-e"/>
+                      	<p:menuitem value="Flux" outcome="/admin/addFlux" icon="ui-icon-signal-diag"/>
+                    	<p:menuitem value="Prévu" outcome="/admin/schedule" icon="ui-icon-calendar"/>
+                    </p:submenu>
+                    </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+
+		<p:layoutUnit position="center">
+		
+ <f:view>
+Ajouter Flux aa
+        <h:form>
+				<h:inputText id="intitflux" value="#{fluxBean.intitule}"  />
+				<h:inputText id="chflux" value="#{fluxBean.charge_horaire}"  />
+				<h:commandButton action="#{fluxBean.addFluxBean()}" value="valider" style="margin-top:5px"/>
+        </h:form>
+
+Afficher liste flux
+<h:form>
+		<p:dataTable id="fluxID" var="j" value="#{fluxBean.listFlux}"
+		editable="true" editMode="cell" widgetVar="flux"
+		selection="#{fluxBean.flux}" selectionMode="single" rowKey="#{j.id}"
+		>
+		<p:ajax event="cellEdit" process="@this" listener="#{fluxBean.onEditLabel}" update="fluxID" />
+			<p:column headerText="Intitule">
+				<p:cellEditor>
+					<f:facet name="output"><h:outputText value="#{j.intitule}" /></f:facet>
+					<f:facet name="input"><p:inputText value="#{j.intitule}" style="width:96%"/></f:facet>
+				</p:cellEditor>
+				
+			</p:column>
+			<p:column headerText="Charge">
+				<p:cellEditor>
+					<f:facet name="output"><h:outputText value="#{j.charge_horaire}" /></f:facet>
+					<f:facet name="input"><p:inputText value="#{j.charge_horaire}" style="width:96%"/></f:facet>
+				</p:cellEditor>
+			</p:column>
+			<p:column style="width:32px">
+           			<p:rowEditor />
+       		</p:column>
+		</p:dataTable>
+		<p:contextMenu for="fluxID" widgetVar="cMenu">
+		<p:menuitem value="Delete" update="fluxID" icon="ui-icon-close" action="#{fluxBean.deleteFluxBean()}"/>
+		</p:contextMenu>
+</h:form>
+</f:view>
+</p:layoutUnit>
+</p:layout>
+
+</h:body> 
+</html>

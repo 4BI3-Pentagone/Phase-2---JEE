@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+	<h:head>
+		<title>Default title</title>
+	</h:head>
+	<h:body>
+		<p:dataTable var="user" value="#{userBean.listUsers}"
+        selection="#{userBean.selectedUser}" selectionMode="single"
+        dynamic="true"
+        onRowSelectUpdate="userUpdateForm"
+        onRowUnselectUpdate="userUpdateForm"
+        rowSelectListener="#{userBean.selectedUser}"
+        paginator="true" rows="10" style="width: 70% ">
+        <p:column sortBy="#{user.idUser}" filterBy="#{user.idUser}" >
+            <f:facet name="header">
+            <h:outputText value="Id" />
+            </f:facet>
+            <h:outputText value="#{user.idUser}" />
+            </p:column>
+            <p:column sortBy="#{user.nom}" filterBy="#{user.nom}">
+            <f:facet name="header">
+            <h:outputText value="Name" />
+            </f:facet>
+            <h:outputText value="#{user.nom}" />
+            </p:column>
+            <p:column sortBy="#{user.email}" filterBy="#{user.email}">
+            <f:facet name="header">
+            <h:outputText value="Email" />
+            </f:facet>
+            <h:outputText value="#{user.email}" />
+            </p:column>
+            <p:column sortBy="#{user.prenom}" filterBy="#{user.dob}">
+            <f:facet name="header">
+            <h:outputText value="DOB" />
+            </f:facet>
+            <h:outputText value="#{user.dob}" >
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:outputText>
+        </p:column>
+    </p:dataTable>
+    <p:panel id="userDetailsPanelId" header="Users Details" style="width:60%;">
+    <h:panelGrid columns="2" cellpadding="2" id="userUpdateForm" border="0" >
+            <h:outputLabel for="#{userBean.selectedUser.idUser}" value="idUser"/>
+            <h:inputText value="#{userBean.selectedUser.idUser}" style="width: 100%;" readonly="true"></h:inputText>
+
+            <h:outputLabel for="#{userBean.selectedUser.nom}" value="nom"/>
+            <h:inputText value="#{userBean.selectedUser.nom}" readonly="true"></h:inputText>
+
+            <h:outputLabel for="#{userBean.selectedUser.email}" value="email"/>
+            <h:inputText value="#{userBean.selectedUser.email}" readonly="true"></h:inputText>
+
+            <h:outputLabel for="#{userBean.selectedUser.sexe}" value="sexe"/>
+            <h:inputText value="#{userBean.selectedUser.sexe}" readonly="true"></h:inputText>
+
+            <h:outputLabel for="#{userBean.selectedUser.dob}" value="DOB"/>
+            <h:inputText value="#{userBean.selectedUser.dob}" readonly="true">
+                <f:convertDateTime pattern="MM/dd/yyyy" />
+            </h:inputText>
+
+        </h:panelGrid>
+        </p:panel>
+    </h:form>
+	</h:body>
+</html>

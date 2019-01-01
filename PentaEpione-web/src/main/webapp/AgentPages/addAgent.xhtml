@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      
+       >
+<h:head></h:head> 
+<h:body> 
+Ajouter Agent
+        <h:form id="form">
+        		<h:outputText value="Ajouter un agent" rendered="#{!agentBean.selection}"></h:outputText>
+				<h:outputText value="Modifier l'agent de matircule: #{agentBean.matricule}" rendered="#{agentBean.selection}"></h:outputText>
+				<br />
+        		pays: <h:selectOneMenu value="#{villeBean.paysId}" >
+						<f:selectItems id="heh" value="#{paysBean.getAllPays()}"
+										var="pays"
+										itemLabel="#{pays.nom}"
+										itemValue="#{pays.id}" />
+						<p:ajax update="villeId" />
+				</h:selectOneMenu>
+				ville: <h:selectOneMenu id="villeId"  value="#{siteBean.villeId}" >
+						<f:selectItems  value="#{villeBean.getAllVillesByPaysId(villeBean.paysId)}"
+										var="ville"
+										itemLabel="#{ville.nom}"
+										itemValue="#{ville.id}" />
+						<p:ajax update="siteId" />
+										
+				</h:selectOneMenu> 
+				site: <h:selectOneMenu id="siteId" value="#{agentBean.siteId}" >
+						<f:selectItems value="#{siteBean.getSitesByVilleId(siteBean.villeId)}"
+										var="site"
+										itemLabel="#{site.nom}"
+										itemValue="#{site.id}" />
+				</h:selectOneMenu> 
+				<p:commandButton update="form" value="refresh"></p:commandButton>
+				nom: <h:inputText id="nomAgent" value="#{agentBean.nom}"  />
+				prenom: <h:inputText id="prenomAgent" value="#{agentBean.prenom}"  />
+				matricule: <h:inputText id="matriculeAgent" value="#{agentBean.matricule}"  />
+				
+				
+				<h:commandButton action="#{agentBean.addAgent()}" value="valider" style="margin-top:5px" rendered="#{!agentBean.selection}"/>
+       			
+				
+				<h:commandButton action="#{agentBean.updateAgent()}" value="modifier" style="margin-top:5px" rendered="#{agentBean.selection}"/>
+        		<h:commandButton value="Ajouter un agent" rendered="#{agentBean.selection}" style="margin-top:5px"><f:ajax render="form"
+				listener="#{agentBean.unSelectAgent()}"/></h:commandButton>
+       
+        </h:form>
+
+Afficher liste flux
+<h:form>
+		<p:dataTable id="agentID" var="agent" value="#{agentBean.getAllAgents()}"
+		editable="true" editMode="cell" widgetVar="agent"
+		selection="#{agentBean.agent}" selectionMode="single" rowKey="#{agent.id}"
+		>
+		
+		
+		
+			<p:column headerText="Nom">
+				<h:outputText value="#{agent.nom}"/>
+				
+			</p:column>
+			<p:column headerText="Prenom">
+				<h:outputText value="#{agent.prenom}"/>
+			</p:column>
+			<p:column headerText="Matricule">
+				<h:outputText value="#{agent.matricule}"/>
+			</p:column>
+			<p:column headerText="Site">
+					<h:outputText value="Pays:#{agent.site.ville.pays.nom} Ville:#{agent.site.ville.nom} Site:#{agent.site.nom}" />
+			</p:column>
+			
+			<p:column >
+           			<h:commandButton value="select to update"><f:ajax render="form"
+						listener="#{agentBean.selectAgent(agent)}"/> </h:commandButton>
+       		</p:column>
+ 
+       		<p:column><h:commandButton value="delete" action="#{agentBean.removeAgent(agent)}"></h:commandButton></p:column>
+		</p:dataTable>
+		<p:contextMenu  widgetVar="cMenu">
+		</p:contextMenu>
+</h:form>
+</h:body> 
+</html>

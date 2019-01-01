@@ -1,0 +1,184 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+                	
+<h:head>
+	<f:facet name="first">
+	<head>
+	<meta charset="utf-8"/>
+	<title>Moderna - Bootstrap 3 flat corporate template</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="" />
+	</head>
+	
+	</f:facet>
+	<f:facet name="middle">
+	
+	<!-- css -->
+	
+	<link href="../ressources/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="../ressources/css/fancybox/jquery.fancybox.css" rel="stylesheet"/>
+	<link href="../ressources/css/jcarousel.css" rel="stylesheet" />
+	<link href="../ressources/css/flexslider.css" rel="stylesheet" />
+	<link href="../ressources/css/style.css" rel="stylesheet" />
+
+	<!-- Theme skin -->
+	<link href="../ressources/skins/default.css" rel="stylesheet" />
+	
+	</f:facet>
+	<f:facet name="last">
+	<script src="../ressources/js/jquery.js"></script>
+	<script src="../ressources/js/jquery.easing.1.3.js"></script>
+	<script src="../ressources/js/bootstrap.min.js"></script>
+	<script src="../ressources/js/jquery.fancybox.pack.js"></script>
+	<script src="../ressources/js/jquery.fancybox-media.js"></script>
+	<script src="../ressources/js/google-code-prettify/prettify.js"></script>
+	<script src="../ressources/js/portfolio/jquery.quicksand.js"></script>
+	<script src="../ressources/js/portfolio/setting.js"></script>
+	<script src="../ressources/js/jquery.flexslider.js"></script>
+	<script src="../ressources/js/animate.js"></script>
+	<script src="../ressources/js/custom.js"></script>
+	</f:facet>
+</h:head>          
+<ui:include src="/template/header.xhtml" />
+
+
+<body>
+	<div id="wrapper">
+		<!-- start header -->
+
+<!-- ************************************* content start ********************************* -->
+
+
+
+
+
+		<section id="featured">
+			<!-- start slider -->
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<!-- Slider -->
+						<div id="main-slider" class="flexslider">
+							<ul class="slides">
+								<li>
+									<img src="../ressources/img/slides/1.jpg" alt="" />
+									<div class="flex-caption">
+										<h3>Modern Design</h3>
+										<p>Duis fermentum auctor ligula ac malesuada. Mauris et metus odio, in pulvinar urna</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+								<li>
+									<img src="../ressources/img/slides/2.jpg" alt="" />
+									<div class="flex-caption">
+										<h3>Fully Responsive</h3>
+										<p>Sodales neque vitae justo sollicitudin aliquet sit amet diam curabitur sed fermentum.</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+								<li>
+									<img src="../ressources/img/slides/3.jpg" alt="" />
+									<div class="flex-caption">
+										<h3>Clean  Fast</h3>
+										<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit donec mer lacinia.</p>
+										<a href="#" class="btn btn-theme">Learn More</a>
+									</div>
+								</li>
+							</ul>
+						</div>
+						<!-- end slider -->
+					</div>
+				</div>
+			</div>
+
+
+
+		</section>
+		<section class="callaction">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="big-cta">
+							<div class="cta-text">
+								<h2><span>Moderna</span> HTML Business Template</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section id="content">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row">
+							
+							<h:form id="master_register">
+
+
+
+												<label>Name : </label>
+												<h:inputText class="form-control"
+													value="#{registerBean.user.nom}" />
+													
+												<br></br>
+												<label>LastName : </label>
+												<h:inputText class="form-control"
+													value="#{registerBean.user.prenom}" />
+												<br></br>
+												<label>Password : </label>
+												<h:inputText class="form-control"
+													value="#{registerBean.user.password}" />
+												<br></br>
+												<label>Email : </label>
+												<h:inputText class="form-control"
+													value="#{registerBean.user.email}" validator="#{registerBean.validateLoginUnicity}" />
+													
+														<h:message  class="alert alert-danger" for="msg_login" />
+												<br></br>
+												<h:commandButton value="Add" id="submit"
+													class="btn btn-w-md btn-round btn-success"
+													action="#{registerBean.doSignUp()}" />
+
+											</h:form>
+							
+							
+									</div>
+									
+								</div>
+							</div>
+						
+						</div>
+					
+				
+		</section>		
+		
+	
+	<a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+	<!-- javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	
+<ui:include src="/template/footer.xhtml" />
+
+
+</div>
+
+</body>
+
+
+<!-- ************************************* content start ********************************* -->
+
+  
+
+             	
+                	
+                	
+                	
+                	
+                	
+                	
+
+</ui:composition>

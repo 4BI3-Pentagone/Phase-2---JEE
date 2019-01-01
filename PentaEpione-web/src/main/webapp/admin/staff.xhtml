@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Agents</title>
+            </f:facet>
+            		  
+        </h:head>
+
+    <h:body>
+    <p:layout fullPage="true">
+
+                 <p:layoutUnit position="north" size="10%" resizable="true" closable="false" collapsible="true">
+               <div style="background-image: url('../ressources/header.jpg'); height: 100%; "> </div> 
+   		   </p:layoutUnit>
+   		   
+     	   <p:layoutUnit position="east" size="230" resizeWhileDragging="true">
+           <f:facet name="header" >
+				    <Strong> </Strong>
+				    <h:form>
+				        <p><h:commandLink value="Déconnexion" action="#{userBean.logout()}" icon="ui-icon-power" /></p>
+				        
+				    </h:form>
+              </f:facet>   
+     	  </p:layoutUnit>
+
+			<p:layoutUnit position="south"  size="65" style="text-align: center" closable="true" collapsible="true">
+  					<f:facet name="footer">
+			        <p:row>
+			            <p:column colspan="2">
+			                   <img src="../ressources/logo.png" width="100" height="60" alt="header"/>
+			            </p:column>	   
+			        </p:row>
+					</f:facet>
+            </p:layoutUnit>
+
+                <p:layoutUnit position="west" size="260" header="Menu" collapsible="true">
+                 <h:form>
+                 
+                    
+                    <p:menu>
+                    <p:submenu icon="ui-icon-home">
+                    	<p:menuitem value="Accueil" outcome="/admin/Home" icon="ui-icon-home"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Users">
+                    	<p:menuitem value="Ajout Users" outcome="/admin/users" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Users" outcome="/admin/afficheUsers" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    
+                    <p:submenu label="Agents">
+                    	<p:menuitem value="Ajout Agents" outcome="/admin/staff" icon="ui-icon-circle-plus"/>
+                      	<p:menuitem value="Consulter Agents" outcome="/admin/afficheAgent" icon="ui-icon-circle-zoomout"/>
+                    
+                    </p:submenu>
+                    <p:submenu label="Gestion des Flux">
+                    	<p:menuitem value="Affectation" outcome="/admin/addaffectation" icon="ui-icon-circle-arrow-e"/>
+                      	<p:menuitem value="Flux" outcome="/admin/addFlux" icon="ui-icon-signal-diag"/>
+                    	<p:menuitem value="Prévu" outcome="/admin/schedule" icon="ui-icon-calendar"/>
+                    </p:submenu>
+                    </p:menu>
+                    </h:form>
+                </p:layoutUnit>
+
+
+		<p:layoutUnit position="center">
+		<h:form id="form2" styleclass="root">
+		<p:fieldset legend="Ajouter Agent">
+            <p:growl id="messages" showDetail="true"/>
+                <p:panelGrid columns="2" id="panel2">
+ 
+			   		<h:outputLabel for="matricule" value="Matricule " icon=""/>
+                    <p:inputText  value="#{staffBean.agent.matricule}" required="true"/>
+                         
+                    <h:outputLabel for="nom" value="Nom: " icon="fa-group"/>
+                    <p:inputText  value="#{staffBean.agent.nom}" required="true" requiredMessage="saisir un nom!"/>   
+                    <h:outputLabel for="prenom" value="Prenom " icon="" required="true"/>
+                    <p:inputText  value="#{staffBean.agent.prenom}"/>
+           
+					
+        			<p:outputLabel for="contrat" value="contrat: " />
+        <p:selectOneMenu id="contrat" value="#{staffBean.agent.contrat}" required="true" effect="fold" editable="true">
+            
+            <f:selectItem itemLabel="CDD" itemValue="CDD" />
+            <f:selectItem itemLabel="CDI" itemValue="CDI" />
+            <f:selectItems value="#{staffBean.agent.contrat}" />
+        </p:selectOneMenu>
+                    
+     
+                   
+               <h3>Nombre d'Heures</h3>
+			    <h:panelGrid columns="1" style="margin-bottom: 10px">
+			        <p:inputText id="nbreHeure" value="#{staffBean.agent.nbreHeure}" required="true" />
+			        <p:slider for="nbreHeure" step="1" maxValue="200" />
+			    </h:panelGrid>
+                    
+                    
+          
+      			         
+      			            <p:growl id="growl" life="2000" />
+     
+     			   
+     
+    					<p:commandButton value="Insérer" id="ajax" update="growl" actionListener="#{staffBean.Save()}" styleClass="ui-priority-primary" />
+ 
+                                    <p:commandButton id="btn_reset" value="Vider" type="reset"/>
+
+              	  </p:panelGrid> 
+               </p:fieldset>
+        	</h:form>   
+                       <p:column headerText="operations">
+							
+						</p:column> 
+				
+                        
+      
+                                  
+        	
+        	
+        </p:layoutUnit>
+            
+        
+        </p:layout>
+        
+        
+    </h:body>
+    
+    </f:view>
+    
+</html>
