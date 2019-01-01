@@ -17,7 +17,7 @@ public class AspNetUser implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="Id")
 	private String id;
 
@@ -45,7 +45,7 @@ public class AspNetUser implements Serializable {
 
 	@Column(name="Insuranceid")
 	private int insuranceid;
-
+	@Column
 	private String lastName;
 
 	@Column(name="LockoutEnabled")
@@ -402,16 +402,10 @@ public class AspNetUser implements Serializable {
 
 	@Override
 	public String toString() {
-		return "AspNetUser [id=" + id + ", accessFailedCount=" + accessFailedCount + ", adress=" + adress
-				+ ", birthDate=" + birthDate + ", discriminator=" + discriminator + ", email=" + email
-				+ ", emailConfirmed=" + emailConfirmed + ", firstName=" + firstName + ", imageName=" + imageName
-				+ ", insuranceid=" + insuranceid + ", lastName=" + lastName + ", lockoutEnabled=" + lockoutEnabled
-				+ ", lockoutEndDateUtc=" + lockoutEndDateUtc + ", passwordHash=" + passwordHash + ", phoneNumber="
-				+ phoneNumber + ", phoneNumberConfirmed=" + phoneNumberConfirmed + ", securityStamp=" + securityStamp
-				+ ", speciality=" + speciality + ", twoFactorEnabled=" + twoFactorEnabled + ", userName=" + userName
-				+ ", motifs"+ appointments1+"" + appointments1 + ", appointments2=" + appointments2
-				+ ", cours=" + cours + ", chats1=" + chats1 + ", chats2=" + chats2 + ", rates=" + rates + "]";
+		return "AspNetUser [id=" + id + ", adress=" + adress + ", email=" + email + ", firstName=" + firstName
+				+ ", lastName=" + lastName + ", passwordHash=" + passwordHash + ", userName=" + userName + "]";
 	}
+
 	
 
 }

@@ -92,5 +92,6 @@
     <module>PentaEpione-ejb</module>
     <module>PentaEpione-web</module>
     <module>PentaEpione-ear</module>
+    <module>client</module>
   </modules>
 </project>

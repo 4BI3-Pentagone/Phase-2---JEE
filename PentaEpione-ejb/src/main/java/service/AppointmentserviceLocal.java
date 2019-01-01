@@ -3,7 +3,8 @@ package service;
 import javax.ejb.Local;
 
 import model.Appointment;
-import model.Rate;
+
+
 
 @Local
 public interface AppointmentserviceLocal {

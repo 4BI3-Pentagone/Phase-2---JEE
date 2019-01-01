@@ -9,6 +9,7 @@ import javax.persistence.Query;
 import model.Appointment;
  
 
+
 /**
  * Session Bean implementation class Appointmentservice
  */
