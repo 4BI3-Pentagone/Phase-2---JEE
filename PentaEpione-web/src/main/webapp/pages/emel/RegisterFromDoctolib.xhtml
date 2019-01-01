@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Epione -Show contrat" />
+	<ui:param name="param_page" value="Show Posts" />
+
+	<h:head></h:head>
+
+	<ui:define name="ContainerPI">
+
+		<h:form id="form">
+
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="username" />
+
+								<h:inputText class="form-control" type="text"
+									value="#{managedBeanEmel.register.lastname}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="username" />
+
+								<h:inputText class="form-control" type="text"
+									value="#{managedBeanEmel.register.firstname}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="username" />
+
+								<h:inputText class="form-control" type="text"
+									value="#{managedBeanEmel.register.speciality_s}" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="username" />
+
+								<h:inputText class="form-control" type="text"
+									value="#{managedBeanEmel.register.adresse}" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="password" />
+
+								<h:inputSecret class="form-control" type="text" name="Password"
+									value="#{managedBeanEmel.register.password}" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="password" />
+
+								<h:inputSecret class="form-control" type="text" name="Password"
+									value="#{managedBeanEmel.email}" />
+							</div>
+						</div>
+
+
+
+						<div class="form-group text-center row m-t-20">
+							<div class="col-12">
+								<p:commandButton
+									class="btn btn-info btn-block waves-effect waves-light"
+									id="btn" action="#{managedBeanEmel.doAdd()}" value="add"/>
+							</div>
+						</div>
+
+
+				
+		</h:form>
+
+	</ui:define>
+</ui:composition>
+

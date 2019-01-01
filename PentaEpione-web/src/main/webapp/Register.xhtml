@@ -1,99 +1,115 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <h:html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-xmlns:ui="http://java.sun.com/jsf/facelets" template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-          <title>Epione- Pidev Project</title>
+	<title>Epione- Pidev Project</title>
 
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui"/>
-        <link rel="shortcut icon" href="./resources/assets/images/Souslogo.jpeg"/>
-        <link rel="stylesheet" href="./resources/assets/plugins/morris/morris.css" />
-        <link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="./resources/assets/css/icons.css" rel="stylesheet" type="text/css"/>
-        <link href="./resources/assets/css/style.css" rel="stylesheet" type="text/css"/>
-    </h:head>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui" />
+	<link rel="shortcut icon"
+		href="./resources/assets/images/Souslogo.jpeg" />
+	<link rel="stylesheet"
+		href="./resources/assets/plugins/morris/morris.css" />
+	<link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet"
+		type="text/css" />
+	<link href="./resources/assets/css/icons.css" rel="stylesheet"
+		type="text/css" />
+	<link href="./resources/assets/css/style.css" rel="stylesheet"
+		type="text/css" />
+</h:head>
 
 
-    <h:body>
+<h:body>
 
-        <!-- Begin page -->
-        <div class="accountbg"></div>
-        <div class="wrapper-page">
+	<!-- Begin page -->
+	<div class="accountbg"></div>
+	<div class="wrapper-page">
 
-            <div class="card">
-                <div class="card-body">
+		<div class="card">
+			<div class="card-body">
 
-                    <h3 class="text-center mt-0 m-b-15">
-                        <a href="#" class="logo logo-admin"><img src="./resources/assets/images/epione.png" height="150" alt="logo"/></a>
-                    </h3>
+				<h3 class="text-center mt-0 m-b-15">
+					<a href="#" class="logo logo-admin"><img
+						src="./resources/assets/images/epione.png" height="150" alt="logo" /></a>
+				</h3>
 
-                    <h4 class="text-muted text-center font-18"><b>Register</b></h4>
+				<h4 class="text-muted text-center font-18">
+					<b>Register</b>
+				</h4>
 
-                    <div class="p-3">
-                       <h:form class="form-horizontal m-t-20" action="#">
+				<div class="p-3">
+					<h:form class="form-horizontal m-t-20" action="#">
 
-                            <div class="form-group row">
-                                <div class="col-12">
-                                <h:outputLabel value="username" />
-                                
-                                     <h:inputText class="form-control" type="text"  name="Username"  value="" />
-                                </div>
-                            </div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="username" />
 
-                            <div class="form-group row">
-                                <div class="col-12">
-                                <h:outputLabel value="password" />
-                                
-                                   <h:inputSecret class="form-control" type="text"  name="Password"  value="" />
-                                </div>
-                            </div>
+								<h:inputText class="form-control" type="text" name="Username"
+									value="" />
+							</div>
+						</div>
 
-                            <div class="form-group row">
-                                <div class="col-12">
-                                <h:outputLabel value="confirm pasword" />
-                                
-                                    <h:inputSecret class="form-control" type="text"  name="Confirm Password"  value="" />
-                                </div>
-                            </div> 
-                              <div class="form-group row">
-                                <div class="col-12">
-                            <h:selectOneRadio value="">
-          	<f:selectItem itemValue="Red" itemLabel="Patient" />
-   <f:selectItem itemValue="Green" itemLabel="Doctor" />
-</h:selectOneRadio>
-    </div>
-                            </div> 
-                            
-                            
-                            <div class="form-group text-center row m-t-20">
-                                <div class="col-12">
-                                    <p:commandButton class="btn btn-info btn-block waves-effect waves-light"  id="btn" value="Register"  />
-                                </div>
-                            </div>
-                            
-                            
-                        </h:form>
-                    </div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="password" />
 
-                </div>
-            </div>
-        </div>
-        <!-- jQuery  -->
-        <script src="./resources/assets/js/jquery.min.js"></script>
-        <script src="./resources/assets/js/popper.min.js"></script>
-        <script src="./resources/assets/js/bootstrap.min.js"></script>
-        <script src="./resources/assets/js/modernizr.min.js"></script>
-        <script src="./resources/assets/js/detect.js"></script>
-        <script src="./resources/assets/js/fastclick.js"></script>
-        <script src="./resources/assets/js/jquery.slimscroll.js"></script>
-        <script src="./resources/assets/js/jquery.blockUI.js"></script>
-        <script src="./resources/assets/js/waves.js"></script>
-        <script src="./resources/assets/js/jquery.nicescroll.js"></script>
-        <script src="./resources/assets/js/jquery.scrollTo.min.js"></script>
-    
-        <script src="./resources/assets/js/app.js"></script>
-    </h:body>
+								<h:inputSecret class="form-control" type="text" name="Password"
+									value="" />
+							</div>
+						</div>
+
+						<div class="form-group row">
+							<div class="col-12">
+								<h:outputLabel value="confirm pasword" />
+
+								<h:inputSecret class="form-control" type="text"
+									name="Confirm Password" value="" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-12">
+								<h:selectOneRadio value="">
+									<f:selectItem itemValue="Red" itemLabel="Patient" />
+									<f:selectItem itemValue="Green" itemLabel="Doctor" />
+								</h:selectOneRadio>
+							</div>
+						</div>
+
+
+						<div class="form-group text-center row m-t-20">
+							<div class="col-12">
+								<p:commandButton
+									class="btn btn-info btn-block waves-effect waves-light"
+									id="btn" value="Register" />
+							</div>
+						</div>
+
+
+					</h:form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!-- jQuery  -->
+	<script src="./resources/assets/js/jquery.min.js"></script>
+	<script src="./resources/assets/js/popper.min.js"></script>
+	<script src="./resources/assets/js/bootstrap.min.js"></script>
+	<script src="./resources/assets/js/modernizr.min.js"></script>
+	<script src="./resources/assets/js/detect.js"></script>
+	<script src="./resources/assets/js/fastclick.js"></script>
+	<script src="./resources/assets/js/jquery.slimscroll.js"></script>
+	<script src="./resources/assets/js/jquery.blockUI.js"></script>
+	<script src="./resources/assets/js/waves.js"></script>
+	<script src="./resources/assets/js/jquery.nicescroll.js"></script>
+	<script src="./resources/assets/js/jquery.scrollTo.min.js"></script>
+
+	<script src="./resources/assets/js/app.js"></script>
+</h:body>
 </h:html>

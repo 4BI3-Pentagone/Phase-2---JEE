@@ -35,7 +35,8 @@ public interface ExtractionRemote {
 
 	public void test(String e, int b) throws IOException;
 
- public Extract profile(String url) throws IOException ;
+    public Extract profile(String url) throws IOException ;
+    
 	public void getPDF() throws DocumentException, IOException;
 
 	public List<Specialityy> ExtractSpeciality() throws IOException;

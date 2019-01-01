@@ -24,15 +24,7 @@
 			type="text/css" />
 	</h:head>
 
-	<!-- <ui:define name="ContainerPI">
-		<h:panelGroup>
-		<h:form>
-			<h:outputText value="full adresse" />
-						<h:outputText value="#{managedBeanEmel.profile.adresse}" />
 
-		</h:form>
-		</h:panelGroup>
-	</ui:define> -->
 	<style type="text/css">
 .ui-panelgrid .ui-grid-responsive .ui-panelgrid-cell {
 	text-align: center;
@@ -41,10 +33,36 @@
 
 
 	<ui:define name="ContainerPI">
-		<h:outputText value="#{managedBeanEmel.profile.lat}" id="lat" />
-		<h:outputText value="#{managedBeanEmel.profile.lng}" id="lng" />
+		
+		
+		<h3 style="margin-top: 0">Basic</h3>
+		<p:panelGrid columns="2">
+			<f:facet name="header">
+				<img src="#{managedBeanEmel.profile.photo}" class="rounded-circle" />
 
-		<script type="text/javascript"
+			</f:facet>
+			<h:outputText value="First Name:" />
+			<h:outputText value="#{managedBeanEmel.profile.lastname}" />
+			<h:outputText value="Last Name:" />
+			<h:outputText value="#{managedBeanEmel.profile.firstname}" />
+			<h:outputText value="Speciality:" />
+			<h:outputText value="#{managedBeanEmel.profile.speciality_s}" />
+
+			<h:outputText value="Phone Number:" />
+			<h:outputText value="#{managedBeanEmel.profile.telephone}" />
+
+			<h:outputText value="Full adress:" />
+			<h:outputText value="#{managedBeanEmel.profile.adresse}" />
+		</p:panelGrid>
+
+		<h3>Description</h3>
+		<p:panelGrid columns="1" layout="grid" cellpadding="10">
+			<h:outputText value="#{managedBeanEmel.profile.password}" />
+
+		</p:panelGrid>
+		<p:separator></p:separator>
+		<p:panelGrid style="margin-top:20px">
+<script type="text/javascript"
 			src="https://maps.google.com/maps/api/js?sensor=true"></script>
 
 		<script type="text/javascript"
@@ -53,30 +71,7 @@
 
 		<p:gmap center="36.890257,30.707417" zoom="13" type="HYBRID"
 			style="width:100%;height:400px" model="#{managedBeanEmel.pos}" />
-		<h3 style="margin-top: 0">Basic</h3>
-		<p:panelGrid columns="2">
-			<f:facet name="header">
-				<img src="#{managedBeanEmel.profile.photo}" class="rounded-circle" />
-
-			</f:facet>
-			<h:outputText value="Name:" />
-			<h:outputText value="#{managedBeanEmel.profile.lastname}" />
-			<h:outputText value="Name:" />
-			<h:outputText value="#{managedBeanEmel.profile.firstname}" />
-			<h:outputText value="Speciality:" />
-			<h:outputText value="#{managedBeanEmel.profile.speciality_s}" />
-
-			<h:outputText value="Phone Number:" />
-			<h:outputText value="#{managedBeanEmel.profile.telephone}" />
-
-		</p:panelGrid>
-
-		<h3>Description</h3>
-		<p:panelGrid columns="1" layout="grid" cellpadding="10">
-			<h:outputText value="#{managedBeanEmel.profile.password}" />
-
-		</p:panelGrid>
-
+			</p:panelGrid>
 		<!-- <h3>Grouping</h3>
 		<p:panelGrid style="margin-top:20px">
 			<f:facet name="header">
@@ -193,7 +188,6 @@
 				</p:row>
 			</f:facet> 
 		</p:panelGrid>-->
-
 
 	</ui:define>
 

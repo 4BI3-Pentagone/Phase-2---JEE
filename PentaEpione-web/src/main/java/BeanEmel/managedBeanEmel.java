@@ -36,7 +36,6 @@ public class managedBeanEmel {
 
 	List<AspNetUser> mypatient = new ArrayList<AspNetUser>();
 	String option;
-	// pb.getPatient("59fdcc1c-9b1c-4caf-819d-f1a25b697eaf");
 	Specialityy spe = new Specialityy();
 	List<Specialityy> spelist = new ArrayList<Specialityy>();
 	List<Adresse> citlist = new ArrayList<Adresse>();
@@ -44,29 +43,101 @@ public class managedBeanEmel {
 	Adresse adr = new Adresse();
 	Extract ext = new Extract();
 	static Extract profile = new Extract();
-	// public static LatLng coord1;
 	static MapModel pos = new DefaultMapModel();
+	Extract register;
+	AspNetUser connect;
+	String blassa;
+	String special;
+	String firstname;
+	String lastname;
+	String pass;
+	String email;
+
+	public String getPass() {
+		return pass;
+	}
+
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getBlassa() {
+		return blassa;
+	}
+
+	public void setBlassa(String blassa) {
+		this.blassa = blassa;
+	}
+
+	public String getSpecial() {
+		return special;
+	}
+
+	public void setSpecial(String special) {
+		this.special = special;
+	}
+
+	public String getFirstname() {
+		return firstname;
+	}
+
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+	public Extract getRegister() {
+		return register;
+	}
+
+	public void setRegister(Extract register) {
+		this.register = register;
+	}
 
 	@PostConstruct
 	private void init() throws IOException, ParseException, JSONException {
 
-		mypatient = extract.All();
+		// mypatient = extract.All();
 		spelist = extract.ExtractSpeciality();
 		// extract.getFrenshCities();
 		citlist = extract.getFrenshCities();
-		System.out.println("init" + adr);
-		System.out.println("init" + spe);
+		// System.out.println("init" + adr);
+		// System.out.println("init" + spe);
 		// pos = new DefaultMapModel();
 		// System.out.println("prooooooooo"+extract.profile("www.doctolib.fr/osteopathe/saint-laurent-du-var/remi-picart"));
 		// LatLng coord1 = new LatLng(36.748807, 10.305867);
 		// extract.profile(ext.getProfile());
 		// pos.addOverlay(new Marker(coord1, "Konyaalti"));
-
+		register = new Extract();
+		connect = new AspNetUser();
 	}
 	// selecteddoct
 
 	public ExtractionReso getExtract() {
 		return extract;
+	}
+
+	public AspNetUser getConnect() {
+		return connect;
+	}
+
+	public void setConnect(AspNetUser connect) {
+		this.connect = connect;
 	}
 
 	public void setExtract(ExtractionReso extract) {
@@ -149,10 +220,13 @@ public class managedBeanEmel {
 		this.adr = adr;
 	}
 
-	public void doAdd() throws IOException {
-		System.out.println(extract.AddDoctor("meunier", "cecile", "medecin-generaliste", "rouen", "pa", "email@e.com"));
+	public String doAdd() throws IOException {
+		connect = extract.AddDoctor(register.getLastname(), register.getFirstname(), register.getSpeciality_s(),
+				"rouen", register.getPassword(), "email");
 		// return extract.AddDoctor("meunier", "cecile", "medecin-generaliste",
 		// "rouen", "pa","email@e.com");
+		System.out.println("use"+connect);
+		 return "../login?faces-redirect=true";
 	}
 
 	public String dofind() throws IOException {
@@ -178,8 +252,8 @@ public class managedBeanEmel {
 
 		// pos.addOverlay(new Marker(coord1, "a"));
 		pos = new DefaultMapModel();
-		LatLng coord1 = new LatLng(Double.parseDouble(profile.getLat()),Double.parseDouble(profile.getLng()));
-		pos.addOverlay(new Marker(coord1, "Dr."+profile.getLastname()+" cabinet"));
+		LatLng coord1 = new LatLng(Double.parseDouble(profile.getLat()), Double.parseDouble(profile.getLng()));
+		pos.addOverlay(new Marker(coord1, "Dr." + profile.getLastname() + " cabinet"));
 		return "Profil?faces-redirect=true";
 	}
 
