@@ -8,6 +8,17 @@
 
 <h:head></h:head> 
 <body> 
+<p:dataTable value="#{managedBeanEmel.mypatient}" var="o"
+    			styleClass="order-table">
+    			<p:column>
+    				<!-- column header -->
+    				<f:facet name="header">ID</f:facet>
+    				<!-- row record -->
+    				#{o}
+    			</p:column>
+    		
+			
+</p:dataTable>
 <h:form >
 <h:outputLabel value="Login" />
 						  <p:commandButton value="Modal" type="button" onclick="PF('dlg2').show();" />

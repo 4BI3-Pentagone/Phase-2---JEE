@@ -8,6 +8,9 @@
         <dependent-module archiveName="PentaEpione-ejb.jar" deploy-path="/" handle="module:/resource/PentaEpione-ejb/PentaEpione-ejb">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="jsoup.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/jsoup/jsoup/1.7.2/jsoup-1.7.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="hibernate-core.jar" deploy-path="/" handle="module:/classpath/var/M2_REPO/org/hibernate/hibernate-core/4.3.10.Final/hibernate-core-4.3.10.Final.jar">
             <dependency-type>uses</dependency-type>
         </dependent-module>
