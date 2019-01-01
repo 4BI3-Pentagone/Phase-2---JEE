@@ -3,6 +3,7 @@ package model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import org.hibernate.annotations.GenericGenerator;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -20,7 +21,8 @@ public class AspNetUser implements Serializable {
 	//static   int pref =0;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(generator = "uuid")
+	@GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Column(name="Id")
 	private String id;
 
